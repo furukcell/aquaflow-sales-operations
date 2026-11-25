@@ -1,0 +1,11 @@
+# Firebase App Hosting configuration for Next.js 15.
+# Set these environment variables in Firebase App Hosting backend settings before deploying.
+env:
+  - variable: NEXT_PUBLIC_SUPABASE_URL
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    availability:
+      - BUILD
+      - RUNTIME
