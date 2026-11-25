@@ -141,3 +141,15 @@ insert into storage.buckets(id,name,public,file_size_limit) values('aqua-contrac
 drop policy if exists contract_storage_select on storage.objects;create policy contract_storage_select on storage.objects for select to authenticated using(bucket_id='aqua-contract-files' and (storage.foldername(name))[1]=public.current_company_id()::text);
 drop policy if exists contract_storage_insert on storage.objects;create policy contract_storage_insert on storage.objects for insert to authenticated with check(bucket_id='aqua-contract-files' and (storage.foldername(name))[1]=public.current_company_id()::text and public.current_role() in ('company_admin','sales','operations','documents'));
 drop policy if exists contract_storage_delete on storage.objects;create policy contract_storage_delete on storage.objects for delete to authenticated using(bucket_id='aqua-contract-files' and (storage.foldername(name))[1]=public.current_company_id()::text and public.current_role() in ('company_admin','sales','operations','documents'));
+
+-- Shipment planning and actual execution fields / numbering
+alter table public.shipments alter column quantity type numeric(14,3) using quantity::numeric;
+alter table public.shipments add column if not exists product_description text;
+alter table public.shipments add column if not exists planned_quantity numeric(14,3);
+alter table public.shipments add column if not exists actual_quantity numeric(14,3);
+alter table public.shipments add column if not exists planned_unit text;
+alter table public.shipments add column if not exists actual_unit text;
+alter table public.shipments add column if not exists origin text;
+alter table public.shipments add column if not exists destination_country text;
+alter table public.shipments add column if not exists updated_by uuid references auth.users(id);
+create or replace function public.next_shipment_number() returns text language plpgsql security definer set search_path=public as $$ declare prefix text;n integer;begin if auth.uid() is null then raise exception 'Authentication required';end if;prefix:='SH-'||to_char(now(),'YYYY')||'-';perform pg_advisory_xact_lock(hashtext(public.current_company_id()::text));select coalesce(max((substring(shipment_number from length(prefix)+1))::integer),0)+1 into n from public.shipments where company_id=public.current_company_id() and shipment_number like prefix||'%';return prefix||lpad(n::text,5,'0');end;$$;revoke all on function public.next_shipment_number() from public;grant execute on function public.next_shipment_number() to authenticated;
