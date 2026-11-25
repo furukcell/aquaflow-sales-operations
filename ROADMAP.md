@@ -361,3 +361,10 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [ ] Supabase URL ve anon key Firebase App Hosting ortamına eklenmeli.
 - [ ] CI build sonucu repo ortamında doğrulanmalı.
 - [ ] Preview deployment ve oturum/DB/Storage akışları test edilmeli.
+
+
+## Super-admin ilk ekran (2026-11-25)
+- [x] Platform super-admin dashboard tenant sorgularından ayrıştırıldı; super-admin `/admin/companies` ekranına yönlendirilir.
+- [x] Super-admin şirket ve ilk şirket yöneticisi oluşturma ekranı eklendi (mevcut `superadmin-create-company` Edge Function kullanılır).
+- [ ] Canlı ortamda Edge Function deployment ve şirket oluşturma akışı doğrulanmalı.
+- [ ] Şirket listeleme, durumu ve detay yönetimi sonraki iterasyonda eklenecek.
