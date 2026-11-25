@@ -45,6 +45,7 @@ Kod tarafında altyapısı bulunan modüller:
 - Sözleşmeler — `app/contracts`
 - Sevkiyatlar — `app/shipments`
 - Evrak arşivi — `app/documents`
+- Word evrak taslakları oluşturucu — `app/documents/drafts` (Invoice, Packing List, sözleşme, teklif ve genel taslak; indirilebilir DOCX)
 - Finans ve tahsilatlar — `app/finance`
 - Kullanıcı, profil ve şirket kurulum akışları
 - Supabase verilerinden beslenen Dashboard
@@ -115,6 +116,7 @@ Ardından http://localhost:3000 adresini açın.
 - [x] Teklifler ve sipariş iş akışı
 - [x] Sözleşme ve sevkiyat altyapısı
 - [x] Evrak arşivi altyapısı
+- [x] Temel Word evrak taslak oluşturucu (DOCX)
 - [x] Finans/tahsilat altyapısı
 - [x] Supabase verileriyle Dashboard
 - [x] Müşteri CSV aktarımı, eşleştirme ve mükerrer kontrol
