@@ -69,7 +69,7 @@ alter table public.profiles enable row level security;
 alter table public.customers enable row level security; alter table public.offers enable row level security; alter table public.orders enable row level security;
 alter table public.contracts enable row level security; alter table public.shipments enable row level security; alter table public.documents enable row level security;
 alter table public.payments enable row level security; alter table public.tasks enable row level security; alter table public.audit_logs enable row level security;
-drop policy if exists profile_read_same_company on public.profiles; create policy profile_read_same_company on public.profiles for select to authenticated using(company_id=public.current_company_id());
+drop policy if exists profile_read_same_company on public.profiles; create policy profile_read_same_company on public.profiles for select to authenticated using(id=auth.uid() or company_id=public.current_company_id());
 drop policy if exists profile_update_self on public.profiles; create policy profile_update_self on public.profiles for update to authenticated using(id=auth.uid()) with check(id=auth.uid());
 -- Tenant-scoped CRUD policies. Writes are role-gated; admin, sales, operations, finance/doc roles are progressively scoped.
 drop policy if exists customers_tenant_select on public.customers; create policy customers_tenant_select on public.customers for select to authenticated using(company_id=public.current_company_id());
