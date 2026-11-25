@@ -1,329 +1,331 @@
-# AquaFlow — Product & Engineering Roadmap
+# AquaFlow — Ürün ve Yazılım Geliştirme Yol Haritası
 
-This roadmap is the working plan for building AquaFlow from a prototype into a dependable sales and operations platform. Items are **planned** unless explicitly marked complete.
+Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönetim platformuna dönüşmesi için izlenecek planı gösterir. Tamamlandı olarak işaretlenmeyen maddeler planlanan çalışmalardır.
 
-## Delivery strategy
+## Geliştirme stratejisi
 
-Build a reliable end-to-end path before expanding sideways. The first target is to make the customer → contract → shipment plan → actual shipment → documents workflow usable. Finance, tasks and analytics are layered on top of these dependable records.
+Önce baştan sona çalışan temel iş akışını oluşturacağız. İlk hedef; **müşteri → sözleşme → sevkiyat planı → gerçekleşen sevkiyat → belge** sürecini çalışır hale getirmek. Finans, görevler ve raporlama bu sağlam kayıtların üzerine eklenecek.
 
 ---
 
-## Phase 0 — Product definition and repository foundation
-**Status: In progress**
+## Faz 0 — Proje tanımı ve repo temeli
+**Durum: Devam ediyor**
 
-### Work
-- [x] Define product vision and initial scope
-- [x] Map the main operational modules
-- [x] Prepare a static dashboard prototype
-- [x] Create repository and initial documentation
-- [ ] Confirm application stack and deployment approach
-- [ ] Establish folder structure and development conventions
-- [ ] Set up environment configuration and secrets handling
-- [ ] Set up linting, formatting and baseline tests where supported
-- [ ] Establish issue/commit conventions
+### Yapılacaklar
+- [x] Proje amacı ve ilk kapsamı tanımlandı
+- [x] Ana modüller belirlendi
+- [x] Statik dashboard prototipi hazırlandı
+- [x] GitHub reposu ve dokümantasyon oluşturuldu
+- [ ] Teknoloji ve canlıya alma yöntemi kararlaştırılacak
+- [ ] Proje klasör yapısı ve geliştirme standartları oluşturulacak
+- [ ] Ortam ayarları ve gizli bilgiler yönetimi kurulacak
+- [ ] Uygun lint, format ve test altyapısı kurulacak
+- [ ] Commit ve iş takibi standartları belirlenecek
 
-### Exit criteria
-- Stack and deployment decisions documented.
-- Development environment can be reproduced.
-- Project structure is established.
-- Prototype and product scope are represented in the repository.
+### Tamamlanma kriterleri
+- Teknoloji kararları belgelenmiş olmalı.
+- Geliştirme ortamı yeniden kurulabilir olmalı.
+- Proje klasör yapısı hazır olmalı.
+- Prototip ve proje kapsamı repo içinde yer almalı.
 
-## Phase 1 — Secure application foundation
-**Priority: Critical**
+## Faz 1 — Güvenli uygulama altyapısı
+**Öncelik: Kritik**
 
-### Work
-- [ ] Authentication and session handling
-- [ ] Company/tenant data model
-- [ ] User model and company membership
-- [ ] Initial role and permission model
-- [ ] Server-side authorization enforcement
-- [ ] Tenant isolation rules and tests
-- [ ] Application shell, navigation and responsive layout
-- [ ] Error handling and logging foundation
-- [ ] Database schema/migration strategy
-- [ ] Storage architecture for documents
+### Yapılacaklar
+- [ ] Kullanıcı girişi ve oturum sistemi
+- [ ] Şirket/tenant veri modeli
+- [ ] Kullanıcı ve şirket üyelik yapısı
+- [ ] İlk rol ve yetki sistemi
+- [ ] Sunucu tarafında yetki kontrolü
+- [ ] Şirket verilerinin birbirinden izolasyonu ve testleri
+- [ ] Ana uygulama ekranı, menüler ve responsive yapı
+- [ ] Hata yönetimi ve log altyapısı
+- [ ] Veritabanı şema ve migration yaklaşımı
+- [ ] Belge dosyalarının saklanacağı altyapı
 
-### Initial roles (adjustable)
-- Company administrator
-- Manager
-- Staff/member
-- Read-only (optional)
+### İlk roller (gerektiğinde değiştirilecek)
+- Şirket yöneticisi
+- Yönetici/manager
+- Personel
+- Sadece görüntüleme yetkisi (gerektiğinde)
 
-### Exit criteria
-- Users can authenticate.
-- Users belong to an explicitly defined company context.
-- Access to company data is enforced server-side.
-- Basic application shell is functional.
-- Tenant boundary tests pass.
+### Tamamlanma kriterleri
+- Kullanıcı giriş yapabilmeli.
+- Kullanıcı açıkça tanımlanmış bir şirket hesabına bağlı olmalı.
+- Şirket verilerine erişim sunucu tarafında kontrol edilmeli.
+- Ana uygulama iskeleti çalışmalı.
+- Şirket izolasyonu testleri geçmeli.
 
-## Phase 2 — Customer management
-**Priority: High**
+## Faz 2 — Müşteri yönetimi
+**Öncelik: Yüksek**
 
-### Work
-- [ ] Customer list, search and filters
-- [ ] Customer create/edit/view
-- [ ] Customer contacts
-- [ ] Country and customer categorization
-- [ ] Customer notes
-- [ ] Activity timeline foundation
-- [ ] Customer profile sections for commercial, operations, documents and finance
-- [ ] Import customers from Excel/CSV
-- [ ] Export customer data
+### Yapılacaklar
+- [ ] Müşteri listesi, arama ve filtreler
+- [ ] Müşteri oluşturma, düzenleme ve görüntüleme
+- [ ] Müşteri yetkilileri/iletişim kişileri
+- [ ] Ülke ve müşteri sınıflandırması
+- [ ] Müşteri notları
+- [ ] İşlem geçmişi altyapısı
+- [ ] Müşteri profilinde ticari, operasyon, belge ve finans alanları
+- [ ] Excel/CSV ile müşteri içe aktarma
+- [ ] Müşteri verilerini dışa aktarma
 
-### Exit criteria
-- Customer records can be created, edited, searched and imported.
-- Customer profile serves as the central navigation point for connected records.
-- Import errors are visible and actionable.
+### Tamamlanma kriterleri
+- Müşteriler oluşturulabilmeli, düzenlenebilmeli, aranabilmeli ve içe aktarılabilmeli.
+- Müşteri profili ilişkili kayıtların merkezi olmalı.
+- İçe aktarma hataları kullanıcıya anlaşılır şekilde gösterilmeli.
 
-## Phase 3 — Product catalogue and commercial records
-**Priority: High**
+## Faz 3 — Ürün kataloğu, teklifler ve siparişler
+**Öncelik: Yüksek**
 
-### Work
-- [ ] Product/specification catalogue
-- [ ] Species and size/grade fields (configurable as needed)
-- [ ] Units and quantity validation
-- [ ] Currency and price fields
-- [ ] Offers and offer status
-- [ ] Offer follow-up
-- [ ] Orders
-- [ ] Offer-to-order conversion
-- [ ] Commercial record history
+### Yapılacaklar
+- [ ] Ürün ve özellik kataloğu
+- [ ] Tür, boy/kalibre alanları (gerektiğinde yapılandırılabilir)
+- [ ] Birimler ve miktar doğrulama
+- [ ] Fiyat ve para birimi alanları
+- [ ] Teklif oluşturma ve durumları
+- [ ] Teklif takip sistemi
+- [ ] Sipariş kayıtları
+- [ ] Tekliften siparişe dönüşüm
+- [ ] Ticari kayıt geçmişi
 
-### Exit criteria
-- Offers and orders are linked to customers and products.
-- Commercial details are reusable when creating contracts.
-- Currency and quantity values are stored consistently.
+### Tamamlanma kriterleri
+- Teklif ve siparişler müşteri ve ürünlerle bağlantılı olmalı.
+- Ticari bilgiler sözleşme oluştururken kullanılabilmeli.
+- Miktar ve para birimi verileri tutarlı tutulmalı.
 
-## Phase 4 — Contract management and shipment scheduling
-**Priority: Critical — first end-to-end business workflow**
+## Faz 4 — Sözleşme yönetimi ve sevkiyat planı
+**Öncelik: Kritik — İlk uçtan uca iş akışı**
 
-### Work
-- [ ] Contract creation and editing
-- [ ] Contract number and status
-- [ ] Contract parties and commercial terms
-- [ ] Product/size/quantity and price
-- [ ] Currency
-- [ ] Contract dates and relevant terms
-- [ ] Shipment schedule embedded in the contract
-- [ ] Multiple planned shipment rows per contract
-- [ ] Contract attachments
-- [ ] Contract overview and fulfilment summary
-- [ ] Automatically create/link shipment planning records from contract schedule
-- [ ] Prevent accidental duplicate shipment-plan creation
-- [ ] Preserve contract schedule history where dates or quantities change
+### Yapılacaklar
+- [ ] Sözleşme oluşturma ve düzenleme
+- [ ] Sözleşme numarası ve durumu
+- [ ] Sözleşme tarafları ve ticari şartlar
+- [ ] Ürün, boy, miktar ve fiyat
+- [ ] Para birimi
+- [ ] Sözleşme tarihleri ve şartları
+- [ ] Sözleşme içindeki sevkiyat takvimi
+- [ ] Bir sözleşmeye birden fazla sevkiyat planı ekleme
+- [ ] Sözleşme belgeleri
+- [ ] Sözleşme özeti ve gerçekleşme takibi
+- [ ] Sözleşmedeki planlardan otomatik sevkiyat kayıtları oluşturma/bağlama
+- [ ] Aynı planın yanlışlıkla iki kez oluşturulmasını önleme
+- [ ] Tarih veya miktar değişikliklerinin geçmişini koruma
 
-### Exit criteria
-- A contract can be entered with multiple planned shipments.
-- Planned shipment entries are reflected in shipment planning without duplicate manual entry.
-- Contract totals and planned fulfilment summaries are consistent.
-- Changes to schedules are traceable.
+### Tamamlanma kriterleri
+- Bir sözleşmeye birden fazla planlı sevkiyat girilebilmeli.
+- Planlar tekrar manuel giriş gerektirmeden sevkiyat ekranına yansıtılmalı.
+- Sözleşme toplamları ve gerçekleşme özeti tutarlı olmalı.
+- Plan değişiklikleri takip edilebilmeli.
 
-## Phase 5 — Shipment operations
-**Priority: Critical**
+## Faz 5 — Sevkiyat operasyonları
+**Öncelik: Kritik**
 
-### Work
-- [ ] Shipment planning list/calendar
-- [ ] Filters for customer, date, status and country
-- [ ] Shipment detail page
-- [ ] Shipment checklist
-- [ ] Shipment preparation statuses
-- [ ] Actual shipment date and quantity
-- [ ] Planned-versus-actual comparison
-- [ ] Shipment notes
-- [ ] Shipment documents and attachments
-- [ ] Shipment activity log
-- [ ] Contract shipment fulfilment summary
-- [ ] Overdue, upcoming and completed shipment indicators
+### Yapılacaklar
+- [ ] Sevkiyat plan listesi ve takvimi
+- [ ] Müşteri, tarih, durum ve ülke filtreleri
+- [ ] Sevkiyat detay ekranı
+- [ ] Sevkiyat kontrol listesi
+- [ ] Hazırlık durumları
+- [ ] Gerçekleşen sevkiyat tarihi ve miktarı
+- [ ] Planlanan-gerçekleşen karşılaştırması
+- [ ] Sevkiyat notları
+- [ ] Sevkiyat belgeleri ve dosyaları
+- [ ] Sevkiyat işlem geçmişi
+- [ ] Sözleşme sevkiyat gerçekleşme özeti
+- [ ] Geciken, yaklaşan ve tamamlanan sevkiyat göstergeleri
 
-### Suggested initial status flow
-Planned → Preparing → Ready → Shipped → Completed
+### Önerilen ilk durum akışı
+Planlandı → Hazırlanıyor → Hazır → Sevk edildi → Tamamlandı
 
-Status names should be validated against the real workflow.
+Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 
-### Exit criteria
-- Each shipment is connected to a customer and, where applicable, a contract.
-- Planned and actual values remain distinct.
-- Documents and checklist are accessible from the shipment.
-- Shipment status and history can be followed.
+### Tamamlanma kriterleri
+- Sevkiyat müşteri ve gerekiyorsa sözleşmeyle bağlı olmalı.
+- Planlanan ve gerçekleşen değerler ayrı tutulmalı.
+- Belgeler ve kontrol listesi sevkiyat ekranından erişilebilir olmalı.
+- Durum ve geçmiş takip edilebilmeli.
 
-## Phase 6 — Document management
-**Priority: High**
+## Faz 6 — Belge yönetimi
+**Öncelik: Yüksek**
 
-### Work
-- [ ] Central document listing
-- [ ] Document categories
-- [ ] Attach files to customers, contracts and shipments
-- [ ] Document metadata (date, category, owner, related records)
-- [ ] Search/filter
-- [ ] Protected file access
-- [ ] Document checklist per shipment/contract
-- [ ] File versioning strategy
-- [ ] Download and preview where supported
-- [ ] Document templates
-- [ ] Generate basic proforma/document output (after template requirements are validated)
+### Yapılacaklar
+- [ ] Merkezi belge listesi
+- [ ] Belge kategorileri
+- [ ] Belgeleri müşteri, sözleşme ve sevkiyata bağlama
+- [ ] Belge bilgileri (tarih, kategori, yükleyen, ilişkili kayıtlar)
+- [ ] Arama ve filtreleme
+- [ ] Güvenli belge erişimi
+- [ ] Sözleşme/sevkiyat belge kontrol listesi
+- [ ] Dosya sürüm takibi yaklaşımı
+- [ ] Uygun dosyalarda indirme ve önizleme
+- [ ] Belge şablonları
+- [ ] Şablonlar netleştikten sonra temel proforma/belge oluşturma
 
-### Exit criteria
-- Users can reliably find documents through a document hub and linked records.
-- File access respects company and user permissions.
-- Documents can be categorized and linked without creating unstructured duplicate copies.
+### Tamamlanma kriterleri
+- Belgeler merkezi listeden veya ilişkili kayıtlardan bulunabilmeli.
+- Dosya erişimi şirket ve kullanıcı yetkilerine uymalı.
+- Belgeler kategorize edilip kayıtlarla ilişkilendirilebilmeli.
 
-## Phase 7 — Finance and receivables
-**Priority: High**
+## Faz 7 — Finans ve alacak takibi
+**Öncelik: Yüksek**
 
-### Work
-- [ ] Financial tracking records
-- [ ] Contract/shipment amount summaries
-- [ ] Payments and payment dates
-- [ ] Payment allocation/relationship to contracts where applicable
-- [ ] Advances
-- [ ] Outstanding balance calculation
-- [ ] Due dates
-- [ ] Overdue status and alerts
-- [ ] Multi-currency support and explicit exchange-rate handling where required
-- [ ] Customer balance view
-- [ ] Payment history
-- [ ] Finance export
+### Yapılacaklar
+- [ ] Finans kayıtları
+- [ ] Sözleşme/sevkiyat tutar özetleri
+- [ ] Ödemeler ve ödeme tarihleri
+- [ ] Ödemelerin ilgili sözleşmelere bağlanması (gerektiğinde)
+- [ ] Avans kayıtları
+- [ ] Kalan bakiye hesaplama
+- [ ] Vade tarihleri
+- [ ] Gecikme durumu ve uyarılar
+- [ ] Çoklu para birimi ve gerektiğinde açık kur yönetimi
+- [ ] Müşteri bakiye ekranı
+- [ ] Ödeme geçmişi
+- [ ] Finans verilerini dışa aktarma
 
-### Exit criteria
-- Payment records and outstanding balances are understandable and traceable.
-- Due and overdue items are visible.
-- Currency handling rules are documented.
-- The module is clearly operational tracking, not statutory accounting.
+### Tamamlanma kriterleri
+- Ödeme kayıtları ve kalan tutarlar anlaşılır ve izlenebilir olmalı.
+- Vadesi yaklaşan ve geciken ödemeler görülebilmeli.
+- Para birimi kuralları belgelenmeli.
+- Modül resmi muhasebe değil, operasyonel finans takibi olarak kalmalı.
 
-## Phase 8 — Agenda, tasks, reminders and communication history
-**Priority: Medium-High**
+## Faz 8 — Ajanda, görevler, hatırlatmalar ve iletişim geçmişi
+**Öncelik: Orta-Yüksek**
 
-### Work
-- [ ] Tasks
-- [ ] Assignments
-- [ ] Task priorities and statuses
-- [ ] Due dates and reminders
-- [ ] Shared/personal agenda
-- [ ] Customer follow-up records
-- [ ] Communication notes
-- [ ] Tasks linked to customers, contracts and shipments
-- [ ] Notifications center
-- [ ] Activity timeline
+### Yapılacaklar
+- [ ] Görevler
+- [ ] Görev atama
+- [ ] Görev öncelikleri ve durumları
+- [ ] Son tarihler ve hatırlatmalar
+- [ ] Ortak ve kişisel ajanda
+- [ ] Müşteri takip kayıtları
+- [ ] İletişim notları
+- [ ] Müşteri, sözleşme ve sevkiyata bağlı görevler
+- [ ] Bildirim merkezi
+- [ ] İşlem geçmişi
 
-### Exit criteria
-- Follow-ups can be assigned and tracked.
-- Tasks are connected to the records they concern.
-- Upcoming actions and overdue tasks are visible.
+### Tamamlanma kriterleri
+- Takip işleri atanıp izlenebilmeli.
+- Görevler ilgili kayıtlara bağlı olmalı.
+- Yaklaşan ve geciken işler görünür olmalı.
 
-## Phase 9 — Dashboard and reporting
-**Priority: Medium-High**
+## Faz 9 — Dashboard ve raporlama
+**Öncelik: Orta-Yüksek**
 
-### Work
-- [ ] Dashboard connected to real data
-- [ ] Sales overview and trend
-- [ ] Shipment overview
-- [ ] Upcoming shipment panel
-- [ ] Shipment fulfilment and variance analysis
-- [ ] Customer performance
-- [ ] Country/market reporting
-- [ ] Product/size reporting
-- [ ] Receivables and overdue summaries
-- [ ] Date filters
-- [ ] Exportable report formats
+### Yapılacaklar
+- [ ] Gerçek verilerle çalışan dashboard
+- [ ] Satış özeti ve trendler
+- [ ] Sevkiyat özeti
+- [ ] Yaklaşan sevkiyat paneli
+- [ ] Sevkiyat gerçekleşme ve fark analizi
+- [ ] Müşteri performansı
+- [ ] Ülke/pazar raporları
+- [ ] Ürün/boy raporları
+- [ ] Alacak ve gecikmiş ödeme özetleri
+- [ ] Tarih filtreleri
+- [ ] Dışa aktarılabilir raporlar
 
-### Exit criteria
-- Dashboard metrics are computed from operational records.
-- Reports have clear definitions and filter criteria.
-- Export results match displayed data.
+### Tamamlanma kriterleri
+- Dashboard göstergeleri gerçek kayıtlardan hesaplanmalı.
+- Raporların tanımları ve filtreleri açık olmalı.
+- Dışa aktarılan sonuçlar ekrandaki verilerle tutarlı olmalı.
 
-## Phase 10 — Import/export and operational quality
-**Priority: Medium**
+## Faz 10 — İçe/dışa aktarma ve kullanım kalitesi
+**Öncelik: Orta**
 
-### Work
-- [ ] Excel/CSV import framework
-- [ ] Import mapping and validation
-- [ ] Duplicate detection rules
-- [ ] Import preview and error report
-- [ ] Excel/CSV exports
-- [ ] PDF/print-friendly reports
-- [ ] Empty, loading and error states
-- [ ] Responsive layouts
-- [ ] Accessibility and usability pass
-- [ ] Performance review
+### Yapılacaklar
+- [ ] Excel/CSV içe aktarma altyapısı
+- [ ] İçe aktarma eşleştirme ve doğrulama
+- [ ] Yinelenen kayıt kontrolü
+- [ ] Önizleme ve hata raporu
+- [ ] Excel/CSV dışa aktarma
+- [ ] PDF/yazdırma uyumlu raporlar
+- [ ] Boş, yükleniyor ve hata ekranları
+- [ ] Mobil uyum
+- [ ] Erişilebilirlik ve kullanım kolaylığı kontrolü
+- [ ] Performans incelemesi
 
-### Exit criteria
-- Users can safely migrate and export operational data.
-- Import errors do not silently corrupt or partially duplicate records.
-- Core screens work on desktop and mobile-sized layouts.
+### Tamamlanma kriterleri
+- Kullanıcı verileri güvenli şekilde içe aktarabilmeli ve dışa çıkarabilmeli.
+- İçe aktarma hataları sessizce veri bozulmasına veya kayıtların çoğalmasına neden olmamalı.
+- Ana ekranlar masaüstü ve mobil boyutlarda kullanılabilmeli.
 
-## Phase 11 — Automation and integrations
-**Priority: Later**
+## Faz 11 — Otomasyonlar ve entegrasyonlar
+**Öncelik: Sonraki aşamalar**
 
-### Candidate capabilities
-- [ ] Automated reminders
-- [ ] Notifications based on shipment/payment deadlines
-- [ ] Email integration (evaluate)
-- [ ] Calendar integration (evaluate)
-- [ ] Messaging integrations (evaluate)
-- [ ] Automated document generation
-- [ ] Workflow rules
+### Planlanan özellik adayları
+- [ ] Otomatik hatırlatmalar
+- [ ] Sevkiyat ve ödeme tarihlerine bağlı bildirimler
+- [ ] E-posta entegrasyonu (değerlendirilecek)
+- [ ] Takvim entegrasyonu (değerlendirilecek)
+- [ ] Mesajlaşma entegrasyonları (değerlendirilecek)
+- [ ] Otomatik belge üretimi
+- [ ] İş akışı kuralları
 
-### Exit criteria
-- Each automation is reliable, configurable and auditable.
-- Failures are visible and can be retried.
-- Integrations do not bypass authorization controls.
+### Tamamlanma kriterleri
+- Otomasyonlar güvenilir, yönetilebilir ve kayıt altına alınabilir olmalı.
+- Hatalar görünür olmalı ve yeniden denenebilmeli.
+- Entegrasyonlar yetki kontrollerini atlamamalı.
 
-## Phase 12 — AI-assisted workflows
-**Priority: Later; not part of the initial build**
+## Faz 12 — AI destekli özellikler
+**Öncelik: Daha sonra; ilk geliştirme kapsamı değil**
 
-### Candidate capabilities
-- [ ] Contract PDF extraction/OCR
-- [ ] Suggested structured contract data
-- [ ] Document classification
-- [ ] Search using natural language
-- [ ] Report summaries
-- [ ] Assisted data entry
+### Özellik adayları
+- [ ] Sözleşme PDF'lerinden veri çıkarma/OCR
+- [ ] Çıkarılan sözleşme bilgilerini önerme
+- [ ] Belge sınıflandırma
+- [ ] Doğal dille arama
+- [ ] Rapor özetleri
+- [ ] Veri girişine yardımcı özellikler
 
-### Guardrails
-- AI output must be reviewable before it changes authoritative records.
-- Extraction confidence and source-document traceability should be retained where feasible.
-- AI should not silently overwrite contract, shipment or financial data.
+### Güvenlik ve kontrol ilkeleri
+- AI çıktısı, ana kayıtları değiştirmeden önce kullanıcı tarafından kontrol edilebilmeli.
+- Mümkün olduğunda çıkarılan verinin kaynağı ve güven düzeyi tutulmalı.
+- AI, sözleşme, sevkiyat veya finans verilerini sessizce değiştirmemeli.
 
-## Phase 13 — SaaS readiness
-**Priority: Later, after internal workflow validation**
+## Faz 13 — SaaS'a hazır hale getirme
+**Öncelik: İç kullanım süreçleri doğrulandıktan sonra**
 
-### Work
-- [ ] Tenant onboarding
-- [ ] Company settings
-- [ ] User invitations and management
-- [ ] Permission customization
-- [ ] Subscription/billing model evaluation
-- [ ] Tenant-specific configurations
-- [ ] Operational monitoring
-- [ ] Backup/recovery drills
-- [ ] Security review
-- [ ] Documentation and support workflow
+### Yapılacaklar
+- [ ] Yeni şirket hesabı açma süreci
+- [ ] Şirket ayarları
+- [ ] Kullanıcı davetleri ve yönetimi
+- [ ] Yetki özelleştirme
+- [ ] Abonelik ve ücretlendirme modelini değerlendirme
+- [ ] Şirket bazlı yapılandırmalar
+- [ ] Sistem izleme
+- [ ] Yedekleme ve geri yükleme testleri
+- [ ] Güvenlik incelemesi
+- [ ] Kullanım ve destek süreçleri dokümantasyonu
 
-### Exit criteria
-- A new company can be onboarded without manual database manipulation.
-- Tenant isolation is independently tested.
-- Operational and security procedures are documented.
+### Tamamlanma kriterleri
+- Yeni şirket, manuel veritabanı işlemleri gerektirmeden sisteme dahil edilebilmeli.
+- Şirketler arası veri izolasyonu bağımsız olarak test edilmeli.
+- Operasyon ve güvenlik prosedürleri belgelenmeli.
 
-## Cross-cutting requirements (every phase)
+## Her fazda uygulanacak ortak kontroller
 
-- [ ] Security and authorization review
-- [ ] Tenant isolation review
-- [ ] Validation and error states
-- [ ] Activity/audit considerations
-- [ ] Responsive design
-- [ ] Test coverage for critical business logic
-- [ ] Documentation updated
-- [ ] No secrets committed
-- [ ] Keep business logic separate from presentation where possible
+- [ ] Güvenlik ve yetki incelemesi
+- [ ] Şirket izolasyonu kontrolü
+- [ ] Veri doğrulama ve hata ekranları
+- [ ] İşlem geçmişi değerlendirmesi
+- [ ] Mobil uyum
+- [ ] Kritik iş mantığı için testler
+- [ ] Dokümantasyon güncellemesi
+- [ ] Gizli bilgiler repo içine eklenmemeli
+- [ ] İş mantığı mümkün olduğunca arayüzden ayrı tutulmalı
 
-## Immediate next steps
+## İlk yapılacak işler
 
-1. Confirm the stack and deployment constraints.
-2. Establish the repository's working structure and baseline.
-3. Implement secure company/user foundations.
-4. Build customer management.
-5. Implement contract creation with shipment schedule linkage.
-6. Build shipment planning and execution.
-7. Connect documents to these records.
+1. Teknoloji ve canlıya alma kararlarını netleştirmek.
+2. Repo içindeki çalışma yapısını oluşturmak.
+3. Güvenli şirket ve kullanıcı altyapısını geliştirmek.
+4. Müşteri yönetimini geliştirmek.
+5. Sözleşme oluşturma ve sevkiyat planı bağlantısını kurmak.
+6. Sevkiyat planlama ve gerçekleşme modülünü geliştirmek.
+7. Belgeleri bu kayıtlara bağlamak.
 
-**Roadmap maintenance:** mark items complete only when implementation exists and acceptance criteria are met. Reorder based on validated operational needs, not speculative features.
+---
+
+**Roadmap güncelleme kuralı:** Bir özellik yalnızca gerçekten geliştirilip tamamlanma kriterlerini karşılıyorsa tamamlandı olarak işaretlenir. Öncelikler gerçek operasyon ihtiyaçlarına göre değişebilir.
