@@ -153,3 +153,16 @@ alter table public.shipments add column if not exists origin text;
 alter table public.shipments add column if not exists destination_country text;
 alter table public.shipments add column if not exists updated_by uuid references auth.users(id);
 create or replace function public.next_shipment_number() returns text language plpgsql security definer set search_path=public as $$ declare prefix text;n integer;begin if auth.uid() is null then raise exception 'Authentication required';end if;prefix:='SH-'||to_char(now(),'YYYY')||'-';perform pg_advisory_xact_lock(hashtext(public.current_company_id()::text));select coalesce(max((substring(shipment_number from length(prefix)+1))::integer),0)+1 into n from public.shipments where company_id=public.current_company_id() and shipment_number like prefix||'%';return prefix||lpad(n::text,5,'0');end;$$;revoke all on function public.next_shipment_number() from public;grant execute on function public.next_shipment_number() to authenticated;
+
+-- Document archive metadata and private storage bucket
+alter table public.documents add column if not exists file_name text;
+alter table public.documents add column if not exists mime_type text;
+alter table public.documents add column if not exists size_bytes bigint;
+alter table public.documents add column if not exists updated_at timestamptz not null default now();
+alter table public.documents add column if not exists updated_by uuid references auth.users(id);
+alter table public.documents add column if not exists category text;
+alter table public.documents add column if not exists notes text;
+insert into storage.buckets(id,name,public,file_size_limit,allowed_mime_types) values('aqua-document-archive','aqua-document-archive',false,52428800,array['application/pdf','image/jpeg','image/png','image/webp','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.ms-powerpoint','application/vnd.openxmlformats-officedocument.presentationml.presentation','text/plain','application/zip']) on conflict(id) do update set public=false,file_size_limit=52428800,allowed_mime_types=excluded.allowed_mime_types;
+drop policy if exists aqua_documents_storage_select on storage.objects;create policy aqua_documents_storage_select on storage.objects for select to authenticated using(bucket_id='aqua-document-archive' and (storage.foldername(name))[1]=public.current_company_id()::text);
+drop policy if exists aqua_documents_storage_insert on storage.objects;create policy aqua_documents_storage_insert on storage.objects for insert to authenticated with check(bucket_id='aqua-document-archive' and (storage.foldername(name))[1]=public.current_company_id()::text and public.current_role() in ('company_admin','sales','operations','documents'));
+drop policy if exists aqua_documents_storage_delete on storage.objects;create policy aqua_documents_storage_delete on storage.objects for delete to authenticated using(bucket_id='aqua-document-archive' and (storage.foldername(name))[1]=public.current_company_id()::text and public.current_role() in ('company_admin','sales','operations','documents'));
