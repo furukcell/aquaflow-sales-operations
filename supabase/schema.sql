@@ -80,3 +80,23 @@ drop policy if exists customers_tenant_delete on public.customers; create policy
 DO $$ declare t text; begin foreach t in array array['offers','orders','contracts','shipments','documents','payments','tasks','audit_logs'] loop execute format('drop policy if exists tenant_select on public.%I',t); execute format('create policy tenant_select on public.%I for select to authenticated using(company_id=public.current_company_id())',t); end loop; end $$;
 DO $$ declare t text; begin foreach t in array array['offers','orders','contracts','shipments','documents','payments','tasks'] loop execute format('drop policy if exists tenant_insert on public.%I',t); execute format('create policy tenant_insert on public.%I for insert to authenticated with check(company_id=public.current_company_id() and public.current_role() in (''company_admin'',''sales'',''operations'',''finance'',''documents''))',t); execute format('drop policy if exists tenant_update on public.%I',t); execute format('create policy tenant_update on public.%I for update to authenticated using(company_id=public.current_company_id() and public.current_role() in (''company_admin'',''sales'',''operations'',''finance'',''documents'')) with check(company_id=public.current_company_id())',t); end loop; end $$;
 drop policy if exists audit_insert on public.audit_logs; create policy audit_insert on public.audit_logs for insert to authenticated with check(company_id=public.current_company_id());
+
+-- Bootstrap company setup and account provisioning support
+alter table public.profiles add column if not exists must_change_password boolean not null default false;
+create or replace function public.bootstrap_company(company_name text, full_name text)
+returns uuid language plpgsql security definer set search_path=public as $$
+declare cid uuid;
+begin
+ if auth.uid() is null then raise exception 'Authentication required'; end if;
+ if exists(select 1 from public.profiles where id=auth.uid()) then raise exception 'Profile already initialized'; end if;
+ if length(trim(company_name))<2 then raise exception 'Company name is required'; end if;
+ insert into public.companies(name) values(trim(company_name)) returning id into cid;
+ insert into public.profiles(id,company_id,full_name,role) values(auth.uid(),cid,trim(full_name),'company_admin');
+ return cid;
+end; $$;
+revoke all on function public.bootstrap_company(text,text) from public;
+grant execute on function public.bootstrap_company(text,text) to authenticated;
+drop policy if exists profile_update_self on public.profiles;
+create policy profile_update_self on public.profiles for update to authenticated using(id=auth.uid()) with check(id=auth.uid() and company_id=public.current_company_id() and role=public.current_role());
+drop policy if exists profile_admin_manage on public.profiles;
+create policy profile_admin_manage on public.profiles for all to authenticated using(company_id=public.current_company_id() and public.current_role()='company_admin') with check(company_id=public.current_company_id() and public.current_role()='company_admin');
