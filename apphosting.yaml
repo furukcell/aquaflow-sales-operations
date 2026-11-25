@@ -1,5 +1,5 @@
 # Firebase App Hosting configuration for Next.js 15.
-# Replace placeholder values in Firebase App Hosting backend configuration.
+# App Hosting build configuration; Supabase keys are configured in Firebase Console.
 env:
   - variable: NEXT_PUBLIC_SUPABASE_URL
     value: https://replace-with-your-project.supabase.co
