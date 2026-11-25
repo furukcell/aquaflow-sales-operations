@@ -141,3 +141,8 @@ Bu doküman, geliştirme kapsamını ve mevcut durumun doğrulanmış sınırlar
 ## Şirket Word şablonları
 
 Belge Arşivi > Word Taslakları sayfasından şirketin mevcut `.docx` şablonları yüklenebilir. Şablonlarda `{{CUSTOMER_NAME}}`, `{{INVOICE_NO}}` gibi Docxtemplater alanları kullanıldığında alan değerleri JSON üzerinden doldurularak Word dosyası üretilir. Şablon dosyaları Supabase Storage'da şirket klasörü altında saklanır. Bu aşamada veriler kullanıcı tarafından alan/JSON olarak girilir; sipariş ve müşteri kayıtlarından otomatik eşleştirme sonraki aşamadır.
+
+
+## Firebase App Hosting hazırlığı
+
+Repo, Next.js 15 için Firebase App Hosting yapılandırma taslağı (`apphosting.yaml`) ve GitHub Actions build kontrolü (`.github/workflows/aquaflow-ci.yml`) içerir. Bunlar yayın için tek başına yeterli değildir: Firebase App Hosting backend'i Firebase konsolunda oluşturulmalı, repo bağlanmalı ve `NEXT_PUBLIC_SUPABASE_URL` ile `NEXT_PUBLIC_SUPABASE_ANON_KEY` ortam değerleri backend ayarlarına eklenmelidir. CI build'de kullanılan Supabase değerleri yalnızca build doğrulama amaçlı placeholder'lardır; gerçek kullanıcı verilerine erişmez.
