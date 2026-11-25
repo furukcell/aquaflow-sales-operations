@@ -368,3 +368,13 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Super-admin şirket ve ilk şirket yöneticisi oluşturma ekranı eklendi (mevcut `superadmin-create-company` Edge Function kullanılır).
 - [ ] Canlı ortamda Edge Function deployment ve şirket oluşturma akışı doğrulanmalı.
 - [ ] Şirket listeleme, durumu ve detay yönetimi sonraki iterasyonda eklenecek.
+
+
+## Super-admin panel genişletme (2026-11-25)
+- [x] Platform genel bakış sayaçları (şirket, kullanıcı, şirket yöneticisi ve tenant bağlantısız profiller)
+- [x] Şirket listesi ve şirket başına kullanıcı/yönetici sayıları
+- [x] Platform kullanıcı listesi, rol ve şirket bağlantısı görünümü
+- [x] Arama ve liste yenileme
+- [x] Şirket oluşturma akışında 25 saniyelik istemci zaman aşımı uyarısı ve işlem sonrası kayıtları yenileme
+- [ ] Şirket durum/plan yönetimi ve güvenli yönetici işlemleri
+- [ ] Audit log, platform destek/işlem geçmişi ve tenant güvenlik kontrolleri
