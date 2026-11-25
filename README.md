@@ -1,133 +1,136 @@
-# AquaFlow — Sales & Operations Platform
+# AquaFlow — Satış ve Operasyon Yönetim Platformu
 
-AquaFlow is a multi-tenant sales, customer, commercial-document, logistics and finance operations platform under active development. It centralizes business records, connects commercial stages, and aims to provide company-scoped dashboards and reporting.
+AquaFlow; müşteri ilişkileri, teklif, sipariş, sözleşme, sevkiyat, evrak ve finans süreçlerini tek bir platformda birleştirmek amacıyla geliştirilen çok şirketli (multi-tenant) bir iş yönetim sistemidir.
 
-> **Development status:** Code is committed and development is ongoing. Full production deployment, end-to-end tests, and validation of every SQL migration against a live Supabase project have not yet been completed. This is an implementation snapshot, not a production-readiness claim.
+> **Geliştirme durumu:** Proje aktif geliştirme aşamasındadır. Kod deposuna eklenen özellikler ile canlı ortamda doğrulanmış özellikler birbirinden ayrılmaktadır. Henüz tüm SQL değişiklikleri canlı Supabase ortamında uygulanmış, uçtan uca test edilmiş veya üretim ortamı için doğrulanmış değildir.
 
-## Product purpose and workflow
+## Ürünün amacı ve iş akışı
 
-The planned commercial lifecycle connects the following modules:
+AquaFlow, ticari operasyonları birbiriyle bağlantılı süreçler olarak takip etmeyi hedefler:
 
-1. **Customers / CRM** — company records, contact information and customer history.
-2. **Offers** — offers, currencies, amounts, validity, line items and status.
-3. **Orders** — accepted offers converted to orders, order details and progress.
-4. **Contracts** — contract records, status and files.
-5. **Shipments** — shipment planning, quantities, product/species, destination, dates and status, linked to customer/order/contract records where applicable.
-6. **Documents** — company-scoped archive for files linked to business records.
-7. **Finance & receivables** — payment records, due dates, currencies, paid amounts, remaining balance, payment methods and references.
-8. **Tasks and activity** — follow-up tasks and audit activity for operational tracking.
-9. **Dashboard and reports** — aggregate operational and financial information from stored records.
+1. **Müşteriler / CRM:** Şirket bilgileri, iletişim bilgileri ve müşteri kayıtları.
+2. **Teklifler:** Teklif numarası, para birimi, tutar, geçerlilik tarihi, kalemler ve durum takibi.
+3. **Siparişler:** Kabul edilen tekliflerden sipariş oluşturma, sipariş kalemleri ve süreç takibi.
+4. **Sözleşmeler:** Sözleşme kayıtları, durumlar ve sözleşme dosyaları.
+5. **Sevkiyatlar:** Ürün, miktar, birim, hedef, planlanan/gerçekleşen tarihler ve sevkiyat durumu.
+6. **Evrak yönetimi:** Müşteri, teklif, sipariş, sözleşme veya sevkiyatla ilişkilendirilebilen merkezi dosya arşivi.
+7. **Finans ve tahsilatlar:** Ödeme kayıtları, vade, para birimi, tahsil edilen tutarlar, kalan bakiye ve ödeme referansları.
+8. **Görevler ve hareketler:** Operasyonel takip için görev ve aktivite kayıtları.
+9. **Dashboard ve raporlama:** Kayıtlar üzerinden oluşturulan operasyonel ve finansal özetler.
 
-The goal is to follow customer context through offers, orders, contracts, shipments, documents and receivables rather than managing each stage in disconnected spreadsheets.
+Amaç, müşteri bağlamını tekliften siparişe, sözleşmeye, sevkiyata, evraka ve tahsilata kadar koparmadan takip edebilmek; dağınık Excel dosyalarına olan ihtiyacı azaltmaktır.
 
-## Company isolation and permissions
+## Şirket ayrımı ve yetkilendirme
 
-AquaFlow is designed as a multi-tenant SaaS application. Each company has scoped records, and users are linked to a company through their profile. Role-based access is intended to govern actions. PostgreSQL row-level security (RLS) policies are included in the schema. Supabase Auth provides authentication, PostgreSQL stores data, and Supabase Storage stores files. Private storage policies are intended to restrict access to each company's folder. Review and test the schema and policies in the target environment before use.
+AquaFlow çok şirketli SaaS yapısına göre tasarlanmıştır. Kullanıcılar şirket profilleriyle ilişkilendirilir ve veriler şirket bazında ayrılır. Rol bazlı yetkilendirme yaklaşımı kullanılır. Veritabanında PostgreSQL Row Level Security (RLS) politikaları bulunur. Kimlik doğrulama Supabase Auth, veri tabanı Supabase PostgreSQL, dosyalar ise Supabase Storage üzerinden yönetilir.
 
-## Technology
+RLS ve depolama politikalarının hedef ortamda ayrıca test edilmesi gerekir.
 
-- Next.js App Router, React and TypeScript
+## Kullanılan teknolojiler
+
+- Next.js App Router
+- React ve TypeScript
 - Supabase Auth
-- Supabase PostgreSQL / Row Level Security
+- Supabase PostgreSQL ve RLS
 - Supabase Storage
-- XLSX parsing for spreadsheet import
+- Excel dosyaları için XLSX okuma altyapısı
 
-## Current implementation snapshot
+## Mevcut kod kapsamı
 
-Application code exists for:
+Kod tarafında altyapısı bulunan modüller:
 
-- Customer management (app/customers)
-- Offers and offer line item schema (app/offers and database schema)
-- Orders and order line items / offer conversion (app/orders and schema)
-- Contracts (app/contracts)
-- Shipment records (app/shipments)
-- Document archive (app/documents)
-- Finance & receivables (app/finance)
-- User administration and profile/setup flows
-- Dashboard with Supabase-derived counts, upcoming shipments, open balances by currency, tasks and audit log display
-- Customer spreadsheet import (app/import)
+- Müşteri yönetimi — `app/customers`
+- Teklifler ve teklif kalemleri — `app/offers` ve veritabanı şeması
+- Siparişler ve tekliften siparişe dönüşüm — `app/orders`
+- Sözleşmeler — `app/contracts`
+- Sevkiyatlar — `app/shipments`
+- Evrak arşivi — `app/documents`
+- Finans ve tahsilatlar — `app/finance`
+- Kullanıcı, profil ve şirket kurulum akışları
+- Supabase verilerinden beslenen Dashboard
+- Müşteri dosya aktarımı — `app/import`
 
-### Customer import — current scope
+## Müşteri dosya aktarımı
 
-The import page currently supports customer import from Excel (.xlsx, .xls) and CSV files:
+Aktarım ekranı Excel (.xlsx, .xls) ve CSV dosyalarından müşteri aktarımı için geliştirilmiştir:
 
-1. Select a spreadsheet or CSV file.
-2. Excel files are read from the first worksheet.
-3. Match source headers to AquaFlow customer fields.
-4. Preview the rows before importing.
-5. Rows without a company name are excluded.
-6. Existing company names are checked and skipped as duplicates within the company.
-7. Valid records are inserted into the authenticated user's company in Supabase.
+1. Excel veya CSV dosyası seçilir.
+2. Excel dosyalarında ilk çalışma sayfası okunur.
+3. Kaynak sütunları AquaFlow müşteri alanlarıyla eşleştirilir.
+4. Aktarım öncesi satır önizlemesi sunulur.
+5. Şirket adı olmayan satırlar aktarım dışında bırakılır.
+6. Şirket içindeki mevcut kayıtlarla isim bazlı mükerrer kontrolü yapılır.
+7. Uygun kayıtlar kullanıcının şirketine aktarılır.
 
-The downloadable CSV template can be opened in Excel. Importing offers, orders, contracts, shipments, payments and other records is planned but is **not yet implemented**. Linked imports need relationship validation and an appropriate import sequence.
+Teklif, sipariş, sözleşme, sevkiyat ve ödeme aktarımı henüz tamamlanmamıştır. Bu kayıtların birbirine bağlı aktarımı için referans eşleştirme ve doğru aktarım sırası gereklidir.
 
-## Planned import architecture
+## Planlanan aktarım yaklaşımı
 
-- Parse file and detect headers.
-- Provide column mapping.
-- Validate required fields, formats and references.
-- Preview rows and warnings.
-- Resolve linked records (such as customer/order identifiers).
-- Import in dependency order, using transactional or rollback-aware processing where possible.
-- Report inserted, skipped and failed rows.
+- Dosya ve sütun başlıklarının okunması
+- Alan eşleştirme
+- Zorunlu alan ve format doğrulaması
+- Aktarım önizlemesi ve hata uyarıları
+- Müşteri/sipariş gibi bağlı kayıtların çözülmesi
+- Bağlantı sırasına göre aktarım
+- Başarılı, atlanan ve hatalı kayıt raporu
 
-File upload does not guarantee that arbitrary workbook layouts will import automatically; source columns may need mapping or normalization.
+Her Excel dosyasının otomatik olarak aktarılacağı garanti edilmez; dosyanın yapısına göre eşleştirme veya düzenleme gerekebilir.
 
-## Run locally
+## Yerel ortamda çalıştırma
 
-Requirements: Node.js 20+.
+Node.js 20+ gerekir.
 
 ```bash
 npm install
 ```
 
-Create `.env.local` with your Supabase project configuration:
+Proje kökünde `.env.local` dosyasını oluşturun:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-Then run:
+Uygulamayı başlatın:
 
 ```bash
 npm run dev
 ```
 
-Open http://localhost:3000.
+Ardından http://localhost:3000 adresini açın.
 
-## Supabase setup
+## Supabase kurulumu
 
-- Review and apply SQL from `supabase/schema.sql` to the intended Supabase project.
-- Configure Supabase Auth and company/profile setup.
-- Configure private storage and verify its policies.
-- Configure environment variables.
-- Test company isolation and role permissions with separate accounts before loading real data.
+- `supabase/schema.sql` dosyasını inceleyin ve hedef Supabase projesine uygulayın.
+- Supabase Auth ve şirket/profil kurulumunu yapılandırın.
+- Özel Storage alanlarını ve erişim politikalarını yapılandırın.
+- Ortam değişkenlerini tanımlayın.
+- Gerçek verileri yüklemeden önce farklı şirket ve kullanıcılarla erişim ayrımını test edin.
 
-## Development roadmap
+## Geliştirme yol haritası
 
-- [x] Application shell and navigation
-- [x] Supabase authentication and company/profile foundation
-- [x] Customer management
-- [x] Offers, order workflow and line-item schema
-- [x] Contracts and shipments
-- [x] Document archive foundation
-- [x] Finance/receivables foundation
-- [x] Dashboard data connected to Supabase queries
-- [x] Customer CSV import with mapping, preview and duplicate checks
-- [x] Excel reading on customer import page
-- [ ] Build and end-to-end validation in target environment
-- [ ] Import offers, orders, contracts, shipments and payments
-- [ ] Relationship mapping and import error reports
-- [ ] Complete task/calendar workflow and audit logging across actions
-- [ ] Reports, exports and advanced filtering
-- [ ] Automated tests, security review and production deployment
+- [x] Uygulama kabuğu ve navigasyon
+- [x] Supabase kimlik doğrulama ve şirket/profil altyapısı
+- [x] Müşteri yönetimi
+- [x] Teklifler ve sipariş iş akışı
+- [x] Sözleşme ve sevkiyat altyapısı
+- [x] Evrak arşivi altyapısı
+- [x] Finans/tahsilat altyapısı
+- [x] Supabase verileriyle Dashboard
+- [x] Müşteri CSV aktarımı, eşleştirme ve mükerrer kontrol
+- [x] Müşteri aktarımında Excel okuma altyapısı
+- [ ] Hedef ortamda derleme ve uçtan uca doğrulama
+- [ ] Teklif, sipariş, sözleşme, sevkiyat ve ödeme aktarımı
+- [ ] İlişki eşleştirme ve aktarım hata raporları
+- [ ] Görev/takvim akışlarının ve aktivite kaydının tamamlanması
+- [ ] Raporlar, dışa aktarma ve gelişmiş filtreler
+- [ ] Otomatik testler, güvenlik incelemesi ve üretim yayını
 
-## Repository structure
+## Depo yapısı
 
-- `app/` — Next.js route pages and modules
-- `components/` — shared application UI, including dashboard
-- `lib/` — shared client/configuration utilities
-- `supabase/schema.sql` — schema, functions and policies
+- `app/`: Sayfalar ve uygulama modülleri
+- `components/`: Ortak arayüz bileşenleri ve Dashboard
+- `lib/`: Ortak yapılandırma ve yardımcı kodlar
+- `supabase/schema.sql`: Veritabanı şeması, fonksiyonlar ve politikalar
 
-README status aims to distinguish committed code from unverified deployment or testing.
+Bu doküman, geliştirme kapsamını ve mevcut durumun doğrulanmış sınırlarını açıklamak için tutulmaktadır.
