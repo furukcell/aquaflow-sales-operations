@@ -136,3 +136,8 @@ Ardından http://localhost:3000 adresini açın.
 - `supabase/schema.sql`: Veritabanı şeması, fonksiyonlar ve politikalar
 
 Bu doküman, geliştirme kapsamını ve mevcut durumun doğrulanmış sınırlarını açıklamak için tutulmaktadır.
+
+
+## Şirket Word şablonları
+
+Belge Arşivi > Word Taslakları sayfasından şirketin mevcut `.docx` şablonları yüklenebilir. Şablonlarda `{{CUSTOMER_NAME}}`, `{{INVOICE_NO}}` gibi Docxtemplater alanları kullanıldığında alan değerleri JSON üzerinden doldurularak Word dosyası üretilir. Şablon dosyaları Supabase Storage'da şirket klasörü altında saklanır. Bu aşamada veriler kullanıcı tarafından alan/JSON olarak girilir; sipariş ve müşteri kayıtlarından otomatik eşleştirme sonraki aşamadır.
