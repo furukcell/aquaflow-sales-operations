@@ -218,10 +218,10 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 **Öncelik: Orta-Yüksek**
 
 ### Yapılacaklar
-- [x] Görevler (temel ekran mevcut; test edilmedi)
+- [x] Görevler (oluşturma, durum değiştirme ve filtreler; test edilmedi)
 - [ ] Görev atama
 - [ ] Görev öncelikleri ve durumları
-- [ ] Son tarihler ve hatırlatmalar
+- [x] Son tarihe göre sıralama ve gecikmiş görev görünürlüğü (arayüz; test edilmedi)\n- [ ] Son tarihler için otomatik hatırlatmalar
 - [ ] Ortak ve kişisel ajanda
 - [ ] Müşteri takip kayıtları
 - [ ] İletişim notları
@@ -238,7 +238,7 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 **Öncelik: Orta-Yüksek**
 
 ### Yapılacaklar
-- [x] Gerçek verilerle çalışan dashboard (Supabase veri bağlantısı mevcut; doğrulanmadı)
+- [x] Gerçek verilerle çalışan dashboard (Supabase veri bağlantısı mevcut; doğrulanmadı)\n- [x] Görev sayısının sınırlı liste yerine toplam kayıt sayısından hesaplanması (kod düzeyinde düzeltildi; test edilmedi)\n- [x] Finans açık bakiye hesaplamasının mevcut payments şemasındaki amount/status alanlarına uyarlanması (kod düzeyinde düzeltildi; test edilmedi)
 - [ ] Satış özeti ve trendler
 - [ ] Sevkiyat özeti
 - [ ] Yaklaşan sevkiyat paneli
