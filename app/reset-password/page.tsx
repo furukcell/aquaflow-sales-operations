@@ -1,1 +1,68 @@
-"use client";import {useState} from "react";import {supabase} from "@/lib/supabase";export default function ResetPassword(){const [pw,setPw]=useState("");const [err,setErr]=useState("");async function submit(e:React.FormEvent){e.preventDefault();if(pw.length<8){setErr("Şifre en az 8 karakter olmalı.");return;}if(!supabase)return;const {error}=await supabase.auth.updateUser({password:pw});if(error){setErr(error.message);return;}const {data:user}=await supabase.auth.getUser();if(user.user){const {error:e2}=await supabase.from("profiles").update({must_change_password:false}).eq("id",user.user.id);if(e2){setErr(e2.message);return;}const {data:p}=await supabase.from("profiles").select("role").eq("id",user.user.id).single();location.assign(p?.role==="super_admin"?"/superadmin":"/");}}return <main className="reset"><form onSubmit={submit}><h1>Yeni şifre belirleyin</h1><p>İlk girişinizde geçici şifrenizi değiştirmeniz gerekiyor.</p><label>Yeni şifre<input type="password" minLength={8} required value={pw} onChange={e=>setPw(e.target.value)}/></label>{err&&<p className="error">{err}</p>}<button>Şifreyi kaydet</button></form><style jsx>{` .reset{min-height:100vh;background:#102236;display:grid;place-items:center;padding:20px;font-family:Arial}.reset form{background:white;width:min(440px,100%);padding:30px;border-radius:16px}.reset p{color:#718294;font-size:13px}.reset label{display:block;margin:20px 0;font-size:13px}.reset input{display:block;width:100%;padding:12px;margin-top:7px;border:1px solid #e4eaf0;border-radius:8px}.reset button{width:100%;background:#16a6a0;color:white;border:0;padding:12px;border-radius:8px;font-weight:bold}.error{color:#a33}`}</style></main>
+"use client";
+
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+
+export default function ResetPassword() {
+  const [pw, setPw] = useState("");
+  const [err, setErr] = useState("");
+
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setErr("");
+    if (pw.length < 8) {
+      setErr("Şifre en az 8 karakter olmalı.");
+      return;
+    }
+    if (!supabase) {
+      setErr("Supabase bağlantısı bulunamadı.");
+      return;
+    }
+    const { error } = await supabase.auth.updateUser({ password: pw });
+    if (error) {
+      setErr(error.message);
+      return;
+    }
+    const { data } = await supabase.auth.getUser();
+    if (data.user) {
+      const { error: profileError } = await supabase
+        .from("profiles")
+        .update({ must_change_password: false })
+        .eq("id", data.user.id);
+      if (profileError) {
+        setErr(profileError.message);
+        return;
+      }
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", data.user.id)
+        .single();
+      location.assign(profile?.role === "super_admin" ? "/superadmin" : "/");
+    }
+  }
+
+  return (
+    <main className="reset">
+      <form onSubmit={submit}>
+        <h1>Yeni şifre belirleyin</h1>
+        <p>İlk girişinizde geçici şifrenizi değiştirmeniz gerekiyor.</p>
+        <label>
+          Yeni şifre
+          <input type="password" minLength={8} required value={pw} onChange={(e) => setPw(e.target.value)} />
+        </label>
+        {err && <p className="error">{err}</p>}
+        <button type="submit">Şifreyi kaydet</button>
+      </form>
+      <style jsx>{`
+        .reset{min-height:100vh;background:#102236;display:grid;place-items:center;padding:20px;font-family:Arial}
+        form{background:white;width:min(440px,100%);padding:30px;border-radius:16px}
+        p{color:#718294;font-size:13px}
+        label{display:block;margin:20px 0;font-size:13px}
+        input{display:block;width:100%;padding:12px;margin-top:7px;border:1px solid #e4eaf0;border-radius:8px}
+        button{width:100%;background:#16a6a0;color:white;border:0;padding:12px;border-radius:8px;font-weight:bold}
+        .error{color:#a33}
+      `}</style>
+    </main>
+  );
+}
