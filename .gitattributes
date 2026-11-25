@@ -1,0 +1,7 @@
+# GitHub Linguist dil sınıflandırmasını uygulama kaynak kodu lehine düzelt
+*.ts linguist-language=TypeScript
+*.tsx linguist-language=TypeScript
+*.js linguist-language=JavaScript
+*.jsx linguist-language=JavaScript
+*.css linguist-language=CSS
+*.sql linguist-language=SQL
