@@ -353,3 +353,11 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 ---
 
 **Roadmap güncelleme kuralı:** Bir özellik yalnızca gerçekten geliştirilip tamamlanma kriterlerini karşılıyorsa tamamlandı olarak işaretlenir. Öncelikler gerçek operasyon ihtiyaçlarına göre değişebilir.
+
+## Firebase App Hosting ön hazırlığı (2026-11-25)
+- [x] Next.js 15 için Firebase App Hosting config taslağı (apphosting.yaml) eklendi; ortam değerleri backend ayarlarından sağlanmalı.
+- [x] GitHub Actions build doğrulama workflow taslağı eklendi.
+- [ ] Firebase App Hosting backend oluşturulmalı ve GitHub repo bağlanmalı.
+- [ ] Supabase URL ve anon key Firebase App Hosting ortamına eklenmeli.
+- [ ] CI build sonucu repo ortamında doğrulanmalı.
+- [ ] Preview deployment ve oturum/DB/Storage akışları test edilmeli.
