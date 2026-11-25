@@ -6,7 +6,7 @@ alter table public.profiles add constraint profiles_role_check check(role in ('s
 alter table public.profiles alter column company_id drop not null;
 -- Prevent a regular user from changing their own company/role; super-admin profile is provisioned manually.
 drop policy if exists profile_update_self on public.profiles;
-create policy profile_update_self on public.profiles for update to authenticated using(id=auth.uid()) with check(id=auth.uid() and company_id is not distinct from (select company_id from public.profiles p where p.id=auth.uid()) and role=(select role from public.profiles p where p.id=auth.uid()));
+create policy profile_update_self on public.profiles for update to authenticated using(id=auth.uid()) with check(id=auth.uid() and company_id is not distinct from public.current_company_id() and role=public.current_role());
 -- Admins may manage their own tenant profiles; superadmins will use server-side Edge Function.
 drop policy if exists profile_admin_manage on public.profiles;
 create policy profile_admin_manage on public.profiles for all to authenticated using(company_id=public.current_company_id() and public.current_role()='company_admin') with check(company_id=public.current_company_id() and public.current_role()='company_admin');
