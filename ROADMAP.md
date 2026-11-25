@@ -16,7 +16,7 @@ Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönet
 - [x] Ana modüller belirlendi
 - [x] Statik dashboard prototipi hazırlandı
 - [x] GitHub reposu ve dokümantasyon oluşturuldu
-- [ ] Teknoloji ve canlıya alma yöntemi kararlaştırılacak
+- [x] Teknoloji ve canlıya alma yöntemi kararlaştırıldı: Supabase backend + Firebase Hosting/Next.js yayın
 - [ ] Proje klasör yapısı ve geliştirme standartları oluşturulacak
 - [ ] Ortam ayarları ve gizli bilgiler yönetimi kurulacak
 - [ ] Uygun lint, format ve test altyapısı kurulacak
@@ -28,6 +28,30 @@ Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönet
 - Proje klasör yapısı hazır olmalı.
 - Prototip ve proje kapsamı repo içinde yer almalı.
 
+
+## Faz 0.5 — Hosting ve yayın mimarisi
+**Durum: Karar verildi; yapılandırma ve yayın henüz yapılmadı**
+
+### Mimari kararı
+- [x] Supabase PostgreSQL veritabanı korunacak
+- [x] Supabase Auth korunacak
+- [x] Supabase Storage dosya depolama için korunacak
+- [x] Web yayın altyapısı Firebase tarafında olacak
+- [ ] Next.js 15 uygulaması için Firebase'in uygun hosting yaklaşımı (App Hosting/Frameworks entegrasyonu) doğrulanacak
+- [ ] Firebase projesi oluşturulacak ve repo ile bağlanacak
+- [ ] Firebase yayın yapılandırması eklenecek
+- [ ] Supabase ortam değişkenleri Firebase yayın ortamında güvenli şekilde tanımlanacak
+- [ ] Preview/test yayını alınacak
+- [ ] Auth, Storage, RLS ve tüm kritik iş akışları yayın ortamında test edilecek
+- [ ] Production yayını ve domain bağlantısı yapılacak
+
+### Tamamlanma kriterleri
+- Next.js uygulaması seçilen Firebase hosting çözümünde başarıyla yayınlanmalı.
+- Supabase oturum, veritabanı ve dosya erişimi canlı ortamda çalışmalı.
+- Gizli anahtarlar repo içine konulmamalı.
+- Şirket izolasyonu ve yetkilendirme yayın ortamında test edilmeli.
+
+---
 ## Faz 1 — Güvenli uygulama altyapısı
 **Öncelik: Kritik**
 
