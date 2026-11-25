@@ -1,6 +1,6 @@
 # AquaFlow — Ürün ve Yazılım Geliştirme Yol Haritası
 
-Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönetim platformuna dönüşmesi için izlenecek planı gösterir. Tamamlandı olarak işaretlenmeyen maddeler planlanan çalışmalardır.
+Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönetim platformuna dönüşmesi için izlenecek planı gösterir. Tamamlandı olarak işaretlenen maddeler repo içinde temel uygulama/arayüz veya şema düzeyinde mevcut olabilir; `[x]` işaretleri tek başına canlı ortamda test edildiği anlamına gelmez. Test gerektiren maddeler ayrıca not edilmiştir.
 
 ## Geliştirme stratejisi
 
@@ -32,13 +32,13 @@ Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönet
 **Öncelik: Kritik**
 
 ### Yapılacaklar
-- [ ] Kullanıcı girişi ve oturum sistemi
-- [ ] Şirket/tenant veri modeli
+- [x] Kullanıcı girişi ve oturum sistemi (Supabase Auth arayüzü)
+- [x] Şirket/tenant veri modeli (şema mevcut)
 - [ ] Kullanıcı ve şirket üyelik yapısı
-- [ ] İlk rol ve yetki sistemi
+- [x] İlk rol ve yetki sistemi (temel rol alanı ve kullanıcı yönetimi mevcut; kapsamlı kontrol tamamlanmadı)
 - [ ] Sunucu tarafında yetki kontrolü
 - [ ] Şirket verilerinin birbirinden izolasyonu ve testleri
-- [ ] Ana uygulama ekranı, menüler ve responsive yapı
+- [x] Ana uygulama ekranı, menüler ve responsive yapı (arayüz düzeyinde)
 - [ ] Hata yönetimi ve log altyapısı
 - [ ] Veritabanı şema ve migration yaklaşımı
 - [ ] Belge dosyalarının saklanacağı altyapı
@@ -60,14 +60,14 @@ Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönet
 **Öncelik: Yüksek**
 
 ### Yapılacaklar
-- [ ] Müşteri listesi, arama ve filtreler
-- [ ] Müşteri oluşturma, düzenleme ve görüntüleme
+- [x] Müşteri listesi, arama ve filtreler (arayüz mevcut; tamamlanma kriterleri henüz doğrulanmadı)
+- [x] Müşteri oluşturma, düzenleme ve görüntüleme (arayüz mevcut; test edilmedi)
 - [ ] Müşteri yetkilileri/iletişim kişileri
 - [ ] Ülke ve müşteri sınıflandırması
-- [ ] Müşteri notları
+- [x] Müşteri notları (alan mevcut)
 - [ ] İşlem geçmişi altyapısı
 - [ ] Müşteri profilinde ticari, operasyon, belge ve finans alanları
-- [ ] Excel/CSV ile müşteri içe aktarma
+- [x] Excel/CSV ile müşteri içe aktarma (eşleştirme/önizleme ve aktarım arayüzü mevcut; test edilmedi)
 - [ ] Müşteri verilerini dışa aktarma
 
 ### Tamamlanma kriterleri
@@ -83,9 +83,9 @@ Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönet
 - [ ] Tür, boy/kalibre alanları (gerektiğinde yapılandırılabilir)
 - [ ] Birimler ve miktar doğrulama
 - [ ] Fiyat ve para birimi alanları
-- [ ] Teklif oluşturma ve durumları
-- [ ] Teklif takip sistemi
-- [ ] Sipariş kayıtları
+- [x] Teklif oluşturma ve durumları (arayüz mevcut; test edilmedi)
+- [x] Teklif takip sistemi (temel durum takibi mevcut; test edilmedi)
+- [x] Sipariş kayıtları (arayüz mevcut; test edilmedi)
 - [ ] Tekliften siparişe dönüşüm
 - [ ] Ticari kayıt geçmişi
 
@@ -98,8 +98,8 @@ Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönet
 **Öncelik: Kritik — İlk uçtan uca iş akışı**
 
 ### Yapılacaklar
-- [ ] Sözleşme oluşturma ve düzenleme
-- [ ] Sözleşme numarası ve durumu
+- [x] Sözleşme oluşturma ve düzenleme (arayüz mevcut; test edilmedi)
+- [x] Sözleşme numarası ve durumu (temel alanlar mevcut; test edilmedi)
 - [ ] Sözleşme tarafları ve ticari şartlar
 - [ ] Ürün, boy, miktar ve fiyat
 - [ ] Para birimi
@@ -122,14 +122,14 @@ Bu belge, AquaFlow'un ilk prototipten güvenilir bir satış ve operasyon yönet
 **Öncelik: Kritik**
 
 ### Yapılacaklar
-- [ ] Sevkiyat plan listesi ve takvimi
+- [x] Sevkiyat plan listesi ve takvimi (liste arayüzü mevcut; takvim kapsamı ayrıca doğrulanmalı)
 - [ ] Müşteri, tarih, durum ve ülke filtreleri
 - [ ] Sevkiyat detay ekranı
 - [ ] Sevkiyat kontrol listesi
 - [ ] Hazırlık durumları
-- [ ] Gerçekleşen sevkiyat tarihi ve miktarı
+- [x] Gerçekleşen sevkiyat tarihi ve miktarı (şema/arayüz alanları mevcut; test edilmedi)
 - [ ] Planlanan-gerçekleşen karşılaştırması
-- [ ] Sevkiyat notları
+- [x] Sevkiyat notları (alan mevcut)
 - [ ] Sevkiyat belgeleri ve dosyaları
 - [ ] Sevkiyat işlem geçmişi
 - [ ] Sözleşme sevkiyat gerçekleşme özeti
@@ -150,12 +150,12 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 **Öncelik: Yüksek**
 
 ### Yapılacaklar
-- [ ] Merkezi belge listesi
-- [ ] Belge kategorileri
+- [x] Merkezi belge listesi (arayüz mevcut; test edilmedi)
+- [x] Belge kategorileri (alan mevcut; test edilmedi)
 - [ ] Belgeleri müşteri, sözleşme ve sevkiyata bağlama
 - [ ] Belge bilgileri (tarih, kategori, yükleyen, ilişkili kayıtlar)
 - [ ] Arama ve filtreleme
-- [ ] Güvenli belge erişimi
+- [x] Güvenli belge erişimi (Storage bucket/policy taslağı mevcut; doğrulanmadı)
 - [ ] Sözleşme/sevkiyat belge kontrol listesi
 - [ ] Dosya sürüm takibi yaklaşımı
 - [ ] Uygun dosyalarda indirme ve önizleme
@@ -171,13 +171,13 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 **Öncelik: Yüksek**
 
 ### Yapılacaklar
-- [ ] Finans kayıtları
+- [x] Finans kayıtları (arayüz mevcut; test edilmedi)
 - [ ] Sözleşme/sevkiyat tutar özetleri
-- [ ] Ödemeler ve ödeme tarihleri
+- [x] Ödemeler ve ödeme tarihleri (arayüz/şema mevcut; test edilmedi)
 - [ ] Ödemelerin ilgili sözleşmelere bağlanması (gerektiğinde)
 - [ ] Avans kayıtları
-- [ ] Kalan bakiye hesaplama
-- [ ] Vade tarihleri
+- [x] Kalan bakiye hesaplama (arayüz hesaplamaları mevcut; doğrulanmadı)
+- [x] Vade tarihleri (alan/arayüz mevcut; test edilmedi)
 - [ ] Gecikme durumu ve uyarılar
 - [ ] Çoklu para birimi ve gerektiğinde açık kur yönetimi
 - [ ] Müşteri bakiye ekranı
@@ -194,7 +194,7 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 **Öncelik: Orta-Yüksek**
 
 ### Yapılacaklar
-- [ ] Görevler
+- [x] Görevler (temel ekran mevcut; test edilmedi)
 - [ ] Görev atama
 - [ ] Görev öncelikleri ve durumları
 - [ ] Son tarihler ve hatırlatmalar
@@ -214,7 +214,7 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 **Öncelik: Orta-Yüksek**
 
 ### Yapılacaklar
-- [ ] Gerçek verilerle çalışan dashboard
+- [x] Gerçek verilerle çalışan dashboard (Supabase veri bağlantısı mevcut; doğrulanmadı)
 - [ ] Satış özeti ve trendler
 - [ ] Sevkiyat özeti
 - [ ] Yaklaşan sevkiyat paneli
@@ -235,9 +235,9 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 **Öncelik: Orta**
 
 ### Yapılacaklar
-- [ ] Excel/CSV içe aktarma altyapısı
-- [ ] İçe aktarma eşleştirme ve doğrulama
-- [ ] Yinelenen kayıt kontrolü
+- [x] Excel/CSV içe aktarma altyapısı (müşteri içe aktarımı mevcut; test edilmedi)
+- [x] İçe aktarma eşleştirme ve doğrulama (temel eşleştirme/önizleme mevcut; test edilmedi)
+- [x] Yinelenen kayıt kontrolü (müşteri aktarımında şirket bazlı; test edilmedi)
 - [ ] Önizleme ve hata raporu
 - [ ] Excel/CSV dışa aktarma
 - [ ] PDF/yazdırma uyumlu raporlar
