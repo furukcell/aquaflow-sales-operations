@@ -387,3 +387,9 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [ ] Audit sonuçları temizlendikten sonra kısıtlar VALIDATE CONSTRAINT ile doğrulanmalı; Supabase hedef ortamında migration uygulaması ayrıca yapılmalı.
 - [ ] Tenant izolasyonunun gerçek iki-tenant testleri CI/DB test ortamında yürütülmeli.
 \n\n## 2026-11-26 — Şirket oluşturma akışı hata görünürlüğü\n- [x] Super-admin şirket oluşturma istemci timeout süresi 45 saniyeye çıkarıldı; timeout sonunda kontrol/yenileme uyarısı gösterilir.\n- [x] Edge Function aşama bazlı loglama ve hata yanıtı (stage) eklendi.\n- [x] Kullanıcı adı kontrolü ve rollback adımlarında hata durumları raporlanır.\n- [x] README'ye login route'u ve kaynak kod bağlantısı eklendi.\n- [ ] Edge Function Supabase'e deploy edilip canlı şirket oluşturma uçtan uca test edilmeli.\n- [ ] Uygulama build/lint ve gerçek UI testi yapılmalı.\n
+
+## 2026-11-26 — Aktif `/superadmin` oluşturma ekranı hata yönetimi
+- [x] Ekran görüntüsünde kullanılan `app/superadmin/page.tsx` rotası doğrulandı; önceki düzeltme farklı panel dosyasındaydı.
+- [x] Aktif route create akışına try/catch/finally, 45 saniye AbortController timeout ve oturum kontrolü eklendi.
+- [x] Edge Function `stage` hata alanı kullanıcıya gösterilir; busy durumu finally ile temizlenir.
+- [ ] Firebase App Hosting deploy sonrası canlı akış doğrulanmalı; sunucu tarafı işlemin timeout sonrası tamamlanmış olabileceği dikkate alınmalı.
