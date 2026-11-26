@@ -393,3 +393,8 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Aktif route create akışına try/catch/finally, 45 saniye AbortController timeout ve oturum kontrolü eklendi.
 - [x] Edge Function `stage` hata alanı kullanıcıya gösterilir; busy durumu finally ile temizlenir.
 - [ ] Firebase App Hosting deploy sonrası canlı akış doğrulanmalı; sunucu tarafı işlemin timeout sonrası tamamlanmış olabileceği dikkate alınmalı.
+
+
+## 2026-11-26 — Edge Function çağrı yöntemi değişikliği
+- [x] Aktif `/superadmin` ekranındaki doğrudan `fetch()` çağrısı `supabase.functions.invoke()` SDK çağrısına dönüştürüldü; timeout ve hata yakalama eklendi.
+- [ ] Deploy sonrası canlı test: Edge Function erişimi, CORS ve API başlıkları doğrulanmalı.
