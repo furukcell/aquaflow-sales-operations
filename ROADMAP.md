@@ -378,3 +378,11 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Şirket oluşturma akışında 25 saniyelik istemci zaman aşımı uyarısı ve işlem sonrası kayıtları yenileme
 - [ ] Şirket durum/plan yönetimi ve güvenli yönetici işlemleri
 - [ ] Audit log, platform destek/işlem geçmişi ve tenant güvenlik kontrolleri
+
+
+## 2026-11-26 — Tenant ilişki bütünlüğü
+- [x] Tek tenant içinde müşteri, teklif, sipariş, sözleşme, sevkiyat, tahsilat ve evrak bağlantıları için composite foreign key migration taslağı eklendi (NOT VALID ile mevcut kayıtları başlangıçta bloklamadan).
+- [x] Teklif/sipariş kalemleri ve sözleşme dosyalarının parent tenant ilişkileri kısıtlandı.
+- [x] Mevcut veri uyuşmazlıklarını tespit etmek için salt-okunur SQL audit dosyası eklendi.
+- [ ] Audit sonuçları temizlendikten sonra kısıtlar VALIDATE CONSTRAINT ile doğrulanmalı; Supabase hedef ortamında migration uygulaması ayrıca yapılmalı.
+- [ ] Tenant izolasyonunun gerçek iki-tenant testleri CI/DB test ortamında yürütülmeli.
