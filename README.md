@@ -98,7 +98,7 @@ Uygulamayı başlatın:
 npm run dev
 ```
 
-Ardından http://localhost:3000 adresini açın.
+Ardından http://localhost:3000 adresini açın.\n\n### Giriş ekranı\n\n- Uygulama giriş route'u: [`/login`](app/login/page.tsx)\n- Yerel giriş ekranı: http://localhost:3000/login\n- Giriş ekranı kaynak kodu: [app/login/page.tsx](app/login/page.tsx)\n\nDeploy edilmiş ortamda giriş ekranı, site domaininin sonuna `/login` eklenerek açılır.
 
 ## Supabase kurulumu
 
