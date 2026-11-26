@@ -386,3 +386,4 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Mevcut veri uyuşmazlıklarını tespit etmek için salt-okunur SQL audit dosyası eklendi.
 - [ ] Audit sonuçları temizlendikten sonra kısıtlar VALIDATE CONSTRAINT ile doğrulanmalı; Supabase hedef ortamında migration uygulaması ayrıca yapılmalı.
 - [ ] Tenant izolasyonunun gerçek iki-tenant testleri CI/DB test ortamında yürütülmeli.
+\n\n## 2026-11-26 — Şirket oluşturma akışı hata görünürlüğü\n- [x] Super-admin şirket oluşturma istemci timeout süresi 45 saniyeye çıkarıldı; timeout sonunda kontrol/yenileme uyarısı gösterilir.\n- [x] Edge Function aşama bazlı loglama ve hata yanıtı (stage) eklendi.\n- [x] Kullanıcı adı kontrolü ve rollback adımlarında hata durumları raporlanır.\n- [x] README'ye login route'u ve kaynak kod bağlantısı eklendi.\n- [ ] Edge Function Supabase'e deploy edilip canlı şirket oluşturma uçtan uca test edilmeli.\n- [ ] Uygulama build/lint ve gerçek UI testi yapılmalı.\n
