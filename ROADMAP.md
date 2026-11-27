@@ -410,3 +410,9 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 ## 2026-11-27 — Super-admin panel route alignment
 - [x] Legacy `/superadmin` route redirected to `/admin/companies`, which contains the platform overview, company list, user list and company-creation tabs.
 - [ ] Firebase deployment and browser verification of the redirected panel.
+
+
+## 2026-11-27 — Super-admin list visibility fix
+- [x] Added `superadmin-platform-data` Edge Function: authenticates caller and checks `super_admin` role, then fetches company/profile listing through service-role client.
+- [x] Super-admin panel refresh now calls the validated Edge Function instead of querying tenant-wide companies/profiles directly under restrictive RLS.
+- [ ] Deploy `superadmin-platform-data` in Supabase and verify live company/user listing.
