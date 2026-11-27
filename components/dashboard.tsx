@@ -23,7 +23,7 @@ const NAV: { s: string; i: [LucideIcon, string, string][] }[] = [
 
 type Cust = { company_name: string; country: string | null };
 type Shipment = { id: string; shipment_number: string; planned_date: string | null; species: string | null; quantity: number | null; unit: string; destination: string | null; status: string; customers?: Cust | Cust[] | null };
-type Task = { id: string; title: string; status: string; due_at: string | null; event_type: string; description: string | null };
+type Task = { id: string; title: string; status: string; due_at: string | null; description: string | null };
 type Log = { id: string; entity_type: string; action: string; details: any; created_at: string };
 
 const ST: Record<string, [string, number]> = { planned: ["Planlandı", 15], preparing: ["Hazırlanıyor", 45], shipped: ["Yola çıktı", 70], delivered: ["Teslim edildi", 100], cancelled: ["İptal", 0] };
@@ -97,7 +97,7 @@ export function Dashboard() {
       open(sb.from("orders").select("id", { count: "exact", head: true })),
       sb.from("shipments").select("id,shipment_number,planned_date,species,quantity,unit,destination,status,customers(company_name,country)").gte("planned_date", today).order("planned_date").limit(8),
       sb.from("shipments").select("quantity").gte("planned_date", mStart).lte("planned_date", mEnd),
-      open(sb.from("tasks").select("id,title,status,due_at,event_type,description").order("due_at")).limit(20),
+      open(sb.from("tasks").select("id,title,status,due_at,description").order("due_at")).limit(20),
       open(sb.from("tasks").select("id", { count: "exact", head: true })),
       sb.from("documents").select("id", { count: "exact", head: true }),
       sb.from("audit_logs").select("id,entity_type,action,details,created_at").order("created_at", { ascending: false }).limit(5),
@@ -211,7 +211,7 @@ function Agenda({ tasks, onDone }: { tasks: Task[]; onDone: (id: string) => void
         return <button key={i} onClick={() => setSel(d)} className={"day" + (k === ymd(new Date()) ? " today" : "") + (k === ymd(sel) ? " sel" : "")}>{i + 1}<span className="dots">{Array.from({ length: n }, (_, j) => <i key={j} className={j ? "a" : "g"} />)}</span></button>; })}
     </div>
     <h3 className="af-plan">{isToday ? "Bugünün Planı" : sel.toLocaleDateString("tr-TR", { day: "numeric", month: "long" }) + " Planı"} <small>({sel.toLocaleDateString("tr-TR", { day: "numeric", month: "long", weekday: "long" })})</small></h3>
-    {list.length ? list.map((e) => <div className="af-pi" key={e.id}><time>{hm(e.d)}</time><span className="af-pic">{e.event_type === "meeting" ? <Users size={20} /> : <FileText size={20} />}</span><div><b>{e.title}</b><small>{e.description || "Plan / görev"}</small></div><button onClick={() => onDone(e.id)} aria-label="Tamamlandı"><Check size={16} /></button></div>) : <div className="af-empty">Bu tarihte kayıtlı plan yok.</div>}
+    {list.length ? list.map((e) => <div className="af-pi" key={e.id}><time>{hm(e.d)}</time><span className="af-pic">{<FileText size={20} /> }</span><div><b>{e.title}</b><small>{e.description || "Plan / görev"}</small></div><button onClick={() => onDone(e.id)} aria-label="Tamamlandı"><Check size={16} /></button></div>) : <div className="af-empty">Bu tarihte kayıtlı plan yok.</div>}
     <Link href="/tasks" className="af-add"><Plus size={18} /> Yeni Plan / Görev</Link>
   </>;
 }
