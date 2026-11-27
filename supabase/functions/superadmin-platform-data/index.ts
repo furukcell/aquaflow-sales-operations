@@ -7,11 +7,15 @@ Deno.serve(async(req)=>{
  try{
   const url=Deno.env.get("SUPABASE_URL"),anon=Deno.env.get("SUPABASE_ANON_KEY"),service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   if(!url||!anon||!service)return json({error:"Function environment configuration missing"},500);
-  const auth=req.headers.get("Authorization")||"",caller=createClient(url,anon,{global:{headers:{Authorization:auth}}});
-  const {data:{user},error:authError}=await caller.auth.getUser();if(authError||!user)return json({error:"Unauthorized"},401);
-  const {data:role,error:roleError}=await caller.from("profiles").select("role").eq("id",user.id).single();
-  if(roleError||role?.role!=="super_admin")return json({error:"Super-admin only"},403);
+  const auth=req.headers.get("Authorization")||"";
+  const caller=createClient(url,anon,{global:{headers:{Authorization:auth}}});
+  const {data:{user},error:authError}=await caller.auth.getUser();
+  if(authError||!user)return json({error:"Unauthorized"},401);
   const admin=createClient(url,service);
+  // Read role with the privileged client to avoid the caller's restrictive RLS policies.
+  const {data:profile,error:roleError}=await admin.from("profiles").select("role").eq("id",user.id).maybeSingle();
+  if(roleError)return json({error:"Role lookup failed: "+roleError.message},500);
+  if(profile?.role!=="super_admin")return json({error:"Super-admin only"},403);
   const [companies,profiles]=await Promise.all([
    admin.from("companies").select("id,name,created_at").order("name"),
    admin.from("profiles").select("id,company_id,full_name,username,job_title,role").order("full_name")
