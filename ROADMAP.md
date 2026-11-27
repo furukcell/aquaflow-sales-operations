@@ -454,3 +454,12 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Dashboard ana panel, takvim ve sevkiyat alanlarının spacing, sınır, renk ve tipografi değerleri referansa yaklaştırıldı.
 - [ ] Firebase deploy sonrası referansla ekran görüntüsü karşılaştırması; fotoğraf, responsive yerleşim ve gerçek verilerin kartlarda doğru gösterimi kontrol edilmeli.
 - [ ] Build/lint ve mobil/masaüstü testleri yapılmalı.
+
+
+## Dashboard — Referans görsel eşleştirme çalışması (27 Kasım 2026)
+- [x] Referans dashboard için mevcut JSX/CSS yapısı incelendi; ekranın stil eklemeleriyle birden fazla katmanda değiştiği belirlendi.
+- [x] Dashboard fotoğraf bannerı, sevkiyat tablosu, durum rozetleri/ilerleme, takvim seçimi, hatırlatma alanı, aktivite satırları ve responsive düzen için eşleştirme CSS pass'i eklendi.
+- [x] Kullanıcı avatarlarında profil adından türetilen baş harfler kullanılmaya başlandı.
+- [ ] Canlı deploy sonrası ekran görüntüsü ile referans karşılaştırması yapılacak; renk, boşluk, kolon oranı ve mobil kırılım düzeltmeleri canlı gözlemle tamamlanacak.
+- [ ] Gerçek veri ile metrik, sevkiyat, takvim ve hatırlatmalar doğrulanacak.
+**Test durumu:** Bu commit için build veya tarayıcı testi çalıştırılmadı; canlı deploy sonucu doğrulanmadı.
