@@ -55,3 +55,31 @@
 @media(max-width:1200px){.reference-actions{grid-template-columns:repeat(3,1fr)}.dashboard-redesign .dash-columns{grid-template-columns:1fr}}
 @media(max-width:760px){.reference-actions{grid-template-columns:repeat(2,1fr)}.top-search{display:none}.dashboard-redesign .hero-banner{margin:0 0 10px;border-radius:0;padding:18px}.dashboard-redesign .hero-greeting{font-size:24px}.dashboard-redesign .hero-meta{font-size:11px}.dashboard-redesign .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.reference-actions{grid-template-columns:1fr 1fr}.dashboard-redesign .dash-metric{grid-template-columns:40px 1fr;padding:10px}.dashboard-redesign .metric-icon{width:40px;height:40px;font-size:19px}}
+
+/* KPI cards — explicit reference styling, individual pastel palettes */
+.dashboard-redesign .dash-kpis{grid-template-columns:repeat(5,minmax(0,1fr));gap:13px}
+.dashboard-redesign .dash-metric{display:flex!important;flex-direction:row;align-items:center;gap:13px;position:relative;min-height:108px;padding:16px!important;border-radius:17px!important;border:1px solid transparent!important;box-shadow:0 5px 15px rgba(30,60,90,.06)!important;background:#fff!important;overflow:hidden}
+.dashboard-redesign .metric-icon{flex:0 0 58px;width:58px!important;height:58px!important;display:flex;align-items:center;justify-content:center;border-radius:50%!important;font-size:26px!important;margin:0!important;grid-row:auto!important}
+.dashboard-redesign .dash-metric label,.dashboard-redesign .dash-metric strong,.dashboard-redesign .dash-metric small{display:block}
+.dashboard-redesign .dash-metric label{font-size:13px;font-weight:750;line-height:1.25}
+.dashboard-redesign .dash-metric strong{font-size:27px!important;line-height:1.15;margin:3px 0!important;color:#101e35}
+.dashboard-redesign .dash-metric small{font-size:11px;color:#536782;line-height:1.35}
+.dashboard-redesign .dash-metric:after{display:none!important}
+.dashboard-redesign .dash-metric:nth-child(1){background:linear-gradient(135deg,#f2fff9,#e8f9f4)!important;border-color:#c9f0df!important}
+.dashboard-redesign .dash-metric:nth-child(1) .metric-icon{background:#d2f7e5;color:#16a34a}
+.dashboard-redesign .dash-metric:nth-child(1) strong{color:#168b43}
+.dashboard-redesign .dash-metric:nth-child(2){background:linear-gradient(135deg,#f3faff,#eaf5ff)!important;border-color:#cde6ff!important}
+.dashboard-redesign .dash-metric:nth-child(2) .metric-icon{background:#dff2ff;color:#1689dc}
+.dashboard-redesign .dash-metric:nth-child(2) strong{color:#146fbe}
+.dashboard-redesign .dash-metric:nth-child(3){background:linear-gradient(135deg,#f4f9ff,#edf4ff)!important;border-color:#d1e4ff!important}
+.dashboard-redesign .dash-metric:nth-child(3) .metric-icon{background:#dcecff;color:#246ed1}
+.dashboard-redesign .dash-metric:nth-child(3) strong{color:#225db6}
+.dashboard-redesign .dash-metric:nth-child(4){background:linear-gradient(135deg,#fffaf0,#fff4e4)!important;border-color:#ffe5c4!important}
+.dashboard-redesign .dash-metric:nth-child(4) .metric-icon{background:#ffedcf;color:#f59e0b}
+.dashboard-redesign .dash-metric:nth-child(4) strong{color:#bb6b0a}
+.dashboard-redesign .dash-metric:nth-child(5){background:linear-gradient(135deg,#faf7ff,#f2edff)!important;border-color:#e4d9ff!important}
+.dashboard-redesign .dash-metric:nth-child(5) .metric-icon{background:#e9ddff;color:#7c3aed}
+.dashboard-redesign .dash-metric:nth-child(5) strong{color:#6b28cc}
+@media(max-width:1250px){.dashboard-redesign .dash-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.dashboard-redesign .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.dashboard-redesign .dash-metric{gap:9px;padding:11px!important;min-height:90px}.dashboard-redesign .metric-icon{flex-basis:40px;width:40px!important;height:40px!important;font-size:20px!important}.dashboard-redesign .dash-metric strong{font-size:22px!important}}
