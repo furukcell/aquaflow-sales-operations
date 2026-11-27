@@ -435,3 +435,12 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Başarılı/başarısız Edge Function yanıtlarında işlem durumu kullanıcıya görünür hale getirildi.
 - [x] Kullanıcı listesinde roller Türkçe açıklamalarla gösteriliyor.
 - [ ] Canlı ortamda kullanıcı oluşturma ve rol listesi testi.
+
+
+## 2026-11-27 — Ajanda etkinlik ve hatırlatma iyileştirmesi
+- [x] Görev tablosuna etkinlik türü, açıklama ve hatırlatma dakika alanları için migration eklendi.
+- [x] Görev ekranında toplantı/etkinlik/görev türü, açıklama ve hatırlatma seçimi.
+- [x] Dashboard takviminde tarih seçimi ve seçilen günün planlarının listelenmesi.
+- [x] Hatırlatma penceresi içinde yaklaşan planlar dashboard'da uyarı olarak gösterilir (dashboard açıkken).
+- [ ] Migration Supabase'te uygulanmalı ve canlı verilerle test edilmeli.
+- [ ] Build ve mobil cihaz testleri yapılmalı.
