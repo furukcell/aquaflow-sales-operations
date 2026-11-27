@@ -25,12 +25,9 @@ export default function ResetPassword() {
     }
     const { data } = await supabase.auth.getUser();
     if (data.user) {
-      const { error: profileError } = await supabase
-        .from("profiles")
-        .update({ must_change_password: false })
-        .eq("id", data.user.id);
+      const { error: profileError } = await supabase.rpc("clear_my_password_change_flag");
       if (profileError) {
-        setErr(profileError.message);
+        setErr("Şifre değişti ancak profil işareti güncellenemedi. SQL migration uygulanmalı: " + profileError.message);
         return;
       }
       const { data: profile } = await supabase
