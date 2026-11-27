@@ -405,3 +405,8 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Mevcut uygunsuz atamaları salt okunur biçimde tespit eden `supabase/task-assignment-audit.sql` eklendi.
 - [ ] Audit çıktısı Supabase'te incelenmeli; mevcut kayıtlar temizlendikten sonra `tasks_assignee_company_fk` doğrulanmalı (`VALIDATE CONSTRAINT`).
 - [ ] Migration Supabase hedef ortamında uygulanmalı ve iki-tenant atama testi yapılmalı.
+
+
+## 2026-11-27 — Super-admin panel route alignment
+- [x] Legacy `/superadmin` route redirected to `/admin/companies`, which contains the platform overview, company list, user list and company-creation tabs.
+- [ ] Firebase deployment and browser verification of the redirected panel.
