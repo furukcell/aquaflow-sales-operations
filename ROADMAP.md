@@ -416,3 +416,9 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Added `superadmin-platform-data` Edge Function: authenticates caller and checks `super_admin` role, then fetches company/profile listing through service-role client.
 - [x] Super-admin panel refresh now calls the validated Edge Function instead of querying tenant-wide companies/profiles directly under restrictive RLS.
 - [ ] Deploy `superadmin-platform-data` in Supabase and verify live company/user listing.
+
+
+## 2026-11-27 — Super-admin Edge Function role lookup hardening
+- [x] Role doğrulaması, caller JWT ile Auth kullanıcı doğrulamasından sonra service-role client üzerinden profile role kontrolü yapacak şekilde değiştirildi; RLS kaynaklı role lookup engeli giderilmeye çalışıldı.
+- [x] Panel hata gösterimi Edge Function'ın döndürdüğü detaylı hata metnine öncelik verir.
+- [ ] Supabase'e güncel Edge Function deploy edilmeli ve canlı panel test edilmeli.
