@@ -428,3 +428,10 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Parola değişimi sonrası profiles tablosuna doğrudan client UPDATE yerine yalnızca auth.uid() profili için flag temizleyen RPC eklendi.
 - [x] RPC execute yetkisi authenticated ile sınırlandırıldı; anon/public erişimi kapatıldı.
 - [ ] Supabase migration uygulanmalı; şirket yöneticisinin ilk giriş ve şifre değişimi canlı test edilmeli.
+
+
+## 2026-11-27 — Şirket kullanıcı yönetimi UX iyileştirmesi
+- [x] Çalışan hesabı oluşturma sırasında çift gönderimi engelleyen busy state eklendi.
+- [x] Başarılı/başarısız Edge Function yanıtlarında işlem durumu kullanıcıya görünür hale getirildi.
+- [x] Kullanıcı listesinde roller Türkçe açıklamalarla gösteriliyor.
+- [ ] Canlı ortamda kullanıcı oluşturma ve rol listesi testi.
