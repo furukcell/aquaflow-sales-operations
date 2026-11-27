@@ -398,3 +398,10 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 ## 2026-11-26 — Edge Function çağrı yöntemi değişikliği
 - [x] Aktif `/superadmin` ekranındaki doğrudan `fetch()` çağrısı `supabase.functions.invoke()` SDK çağrısına dönüştürüldü; timeout ve hata yakalama eklendi.
 - [ ] Deploy sonrası canlı test: Edge Function erişimi, CORS ve API başlıkları doğrulanmalı.
+
+
+## 2026-11-27 — Tenant-safe task assignments
+- [x] Görev atamalarında `assigned_to` kullanıcısının aynı `company_id` tenant'ına ait olmasını yeni/ değiştirilen kayıtlar için composite FK ile zorlayan `NOT VALID` migration eklendi.
+- [x] Mevcut uygunsuz atamaları salt okunur biçimde tespit eden `supabase/task-assignment-audit.sql` eklendi.
+- [ ] Audit çıktısı Supabase'te incelenmeli; mevcut kayıtlar temizlendikten sonra `tasks_assignee_company_fk` doğrulanmalı (`VALIDATE CONSTRAINT`).
+- [ ] Migration Supabase hedef ortamında uygulanmalı ve iki-tenant atama testi yapılmalı.
