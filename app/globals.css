@@ -83,3 +83,39 @@
 @media(max-width:1250px){.dashboard-redesign .dash-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.dashboard-redesign .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.dashboard-redesign .dash-metric{gap:9px;padding:11px!important;min-height:90px}.dashboard-redesign .metric-icon{flex-basis:40px;width:40px!important;height:40px!important;font-size:20px!important}.dashboard-redesign .dash-metric strong{font-size:22px!important}}
+
+
+/* Dashboard reference parity pass: composition, photo banner, calendar and table */
+.dashboard-redesign .hero-banner{background-image:linear-gradient(90deg,rgba(5,27,49,.82),rgba(5,27,49,.38) 56%,rgba(5,27,49,.18)),url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=2000&q=90');background-position:center 48%;min-height:138px}
+.dashboard-redesign .hero-top{align-items:center}
+.dashboard-redesign .hero-greeting{font-size:clamp(25px,2.5vw,36px);letter-spacing:-.7px}
+.dashboard-redesign .hero-meta{display:flex;align-items:center;justify-content:center;white-space:nowrap;box-shadow:0 4px 18px #001b3526}
+.dashboard-redesign .reference-actions button{transition:transform .15s,box-shadow .15s,border-color .15s}
+.dashboard-redesign .reference-actions button:hover{transform:translateY(-1px);box-shadow:0 5px 15px #163a5b13;border-color:#90b9d5}
+.dashboard-redesign .dash-columns{grid-template-columns:minmax(0,1.72fr) minmax(340px,1fr);align-items:start}
+.dashboard-redesign .dash-columns>.panel,.dashboard-redesign .dash-columns>section{min-width:0}
+.dashboard-redesign .panelhead{min-height:62px}
+.dashboard-redesign .tablewrap{overflow-x:auto}
+.dashboard-redesign table{width:100%;min-width:690px}
+.dashboard-redesign td:first-child b{font-weight:800}
+.dashboard-redesign .shipment-status{display:inline-flex;align-items:center;border-radius:10px;padding:6px 9px;font-size:11px;font-weight:750;white-space:nowrap}
+.dashboard-redesign .status-planned{background:#e8eef7;color:#243c60}
+.dashboard-redesign .status-preparing{background:#e5ddff;color:#5536a6}
+.dashboard-redesign .status-shipped{background:#dceeff;color:#1555a0}
+.dashboard-redesign .status-delivered{background:#d9f7e8;color:#147442}
+.dashboard-redesign .status-cancelled{background:#ffe5e5;color:#a42d2d}
+.dashboard-redesign .shipment-progress{height:9px;width:72px;border-radius:999px;background:#e5edf5;overflow:hidden;display:inline-block;vertical-align:middle}
+.dashboard-redesign .shipment-progress span{height:100%;display:block;border-radius:999px;background:linear-gradient(90deg,#08a56b,#31c58a)}
+.dashboard-redesign td .shipment-progress+small{display:inline-block;margin-left:6px;font-weight:750}
+.dashboard-redesign .cal-day{border:0;background:transparent;cursor:pointer}
+.dashboard-redesign .cal-day.selected{outline:2px solid #20a6b2;outline-offset:-2px;font-weight:800}
+.dashboard-redesign .cal-day.today.selected{outline:2px solid #b5f1ed}
+.dashboard-redesign .agenda-reminders:not(:empty){padding:10px 15px;background:#fff8e9;color:#925b0a;border-bottom:1px solid #f5e3c1;font-size:12px}
+.dashboard-redesign .agenda-reminders b{display:block;margin-bottom:5px}
+.dashboard-redesign .agenda-reminders div{padding:3px 0}
+.dashboard-redesign .agenda-add{width:100%;margin-top:12px}
+.dashboard-redesign .activityrow{padding:12px 18px}
+.dashboard-redesign .activityrow time{white-space:nowrap}
+@media(max-width:1100px){.dashboard-redesign .dash-columns{grid-template-columns:1fr}}
+@media(max-width:760px){.dashboard-redesign .hero-top{align-items:flex-start;flex-direction:column}.dashboard-redesign .hero-meta{width:100%;justify-content:flex-start}.dashboard-redesign .dash-columns{grid-template-columns:1fr}.dashboard-redesign .sidebar{width:72px}.dashboard-redesign .sidebar .brand div,.dashboard-redesign .sidebar .username,.dashboard-redesign .sidebar .role{display:none}}
+@media(max-width:520px){.dashboard-redesign .hero-greeting{font-size:24px}.dashboard-redesign .hero-meta{font-size:11px;gap:8px;padding:10px}.dashboard-redesign .dash-kpis{grid-template-columns:1fr 1fr}.dashboard-redesign .dash-metric{align-items:flex-start}.dashboard-redesign .dash-metric small{font-size:10px}}
