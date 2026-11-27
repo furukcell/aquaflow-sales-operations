@@ -444,3 +444,13 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Hatırlatma penceresi içinde yaklaşan planlar dashboard'da uyarı olarak gösterilir (dashboard açıkken).
 - [ ] Migration Supabase'te uygulanmalı ve canlı verilerle test edilmeli.
 - [ ] Build ve mobil cihaz testleri yapılmalı.
+
+
+## 2026-11-27 — Dashboard referans tasarım revizyonu
+- [x] Dashboard ana layout referans görseldeki 5 hızlı işlem butonu sırasına dönüştürüldü.
+- [x] Sidebar şirket seçici görseli, logo alanı ve kullanıcı profil görünümü yenilendi.
+- [x] Üst bar arama alanı, bildirim göstergesi ve kullanıcı avatarı tasarımına geçildi.
+- [x] Dashboard KPI kartları, referansın açık renkli, renk kodlu ve kompakt kart yaklaşımına göre düzenlendi.
+- [x] Dashboard ana panel, takvim ve sevkiyat alanlarının spacing, sınır, renk ve tipografi değerleri referansa yaklaştırıldı.
+- [ ] Firebase deploy sonrası referansla ekran görüntüsü karşılaştırması; fotoğraf, responsive yerleşim ve gerçek verilerin kartlarda doğru gösterimi kontrol edilmeli.
+- [ ] Build/lint ve mobil/masaüstü testleri yapılmalı.
