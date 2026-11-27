@@ -463,3 +463,11 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [ ] Canlı deploy sonrası ekran görüntüsü ile referans karşılaştırması yapılacak; renk, boşluk, kolon oranı ve mobil kırılım düzeltmeleri canlı gözlemle tamamlanacak.
 - [ ] Gerçek veri ile metrik, sevkiyat, takvim ve hatırlatmalar doğrulanacak.
 **Test durumu:** Bu commit için build veya tarayıcı testi çalıştırılmadı; canlı deploy sonucu doğrulanmadı.
+
+
+## 2026-11-27 — Dashboard veri erişimi düzeltmeleri (tasarım değişmedi)
+- [x] Dashboard task sorgusundan şemada bulunmayan `event_type` alanı kaldırıldı; ajanda simgesi alan bağımlılığını kaldıracak şekilde güncellendi.
+- [x] Sevkiyat ve audit log için authenticated SELECT izinleri ve şirket bazlı RLS okuma politikaları migration olarak eklendi.
+- [ ] `20261127150000_dashboard_read_permissions.sql` migration canlı Supabase ortamında uygulanmalı.
+- [ ] Dashboard canlı verilerle test edilmeli: müşteri, sipariş, sevkiyat, görev, evrak ve audit log.
+- [ ] Build/test sonuçları doğrulanmalı; bu değişikliklerde henüz build veya canlı test çalıştırılmadı.
