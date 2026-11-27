@@ -422,3 +422,9 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [x] Role doğrulaması, caller JWT ile Auth kullanıcı doğrulamasından sonra service-role client üzerinden profile role kontrolü yapacak şekilde değiştirildi; RLS kaynaklı role lookup engeli giderilmeye çalışıldı.
 - [x] Panel hata gösterimi Edge Function'ın döndürdüğü detaylı hata metnine öncelik verir.
 - [ ] Supabase'e güncel Edge Function deploy edilmeli ve canlı panel test edilmeli.
+
+
+## 2026-11-27 — İlk giriş parola değişikliği RLS düzeltmesi
+- [x] Parola değişimi sonrası profiles tablosuna doğrudan client UPDATE yerine yalnızca auth.uid() profili için flag temizleyen RPC eklendi.
+- [x] RPC execute yetkisi authenticated ile sınırlandırıldı; anon/public erişimi kapatıldı.
+- [ ] Supabase migration uygulanmalı; şirket yöneticisinin ilk giriş ve şifre değişimi canlı test edilmeli.
