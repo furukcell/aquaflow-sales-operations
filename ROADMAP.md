@@ -471,3 +471,10 @@ Durum isimleri gerçek operasyonla karşılaştırılarak netleştirilecek.
 - [ ] `20261127150000_dashboard_read_permissions.sql` migration canlı Supabase ortamında uygulanmalı.
 - [ ] Dashboard canlı verilerle test edilmeli: müşteri, sipariş, sevkiyat, görev, evrak ve audit log.
 - [ ] Build/test sonuçları doğrulanmalı; bu değişikliklerde henüz build veya canlı test çalıştırılmadı.
+
+
+## 2026-11-28 — CI doğrulama hattı
+- [x] GitHub Actions CI workflow eklendi: main branch push ve PR için Node 20 ile `npm ci`, `npx tsc --noEmit` ve `npm run build` çalıştırır.
+- [ ] Workflow ilk çalıştırmasının GitHub Actions üzerinde başarılı olduğu doğrulanmalı.
+- [ ] ESLint için repo uyumlu ESLint 9 flat config olmadığı için lint CI'ye dahil edilmedi; ayrı konfigürasyon işi olarak planlanmalı.
+- [ ] Canlı Supabase migration ve dashboard doğrulaması bekliyor; CI bunları doğrulamaz.
